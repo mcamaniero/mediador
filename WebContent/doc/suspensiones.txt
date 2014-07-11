@@ -1,0 +1,28 @@
+Suspension Masiva de Lineas Telefonicas
+
+/**************************/
+ *CODIGOS DE LAS CIUDADES *
+ * Guayaquil: 94          *
+ * Quito:     63          *
+/**************************/
+
+CAMPOS REQUERIDOS
+Codigo_ciudad, contrato_intraway, linea, homeexchange, puerto
+
+Procedimiento:
+Crear un archivo .csv con comas (,)
+
+a) Para indicar que se van a realizar suspenciones masivas, en la primera linea escribir la palabra: modificacion
+
+b) Verificar que la linea posea solo los caracteres del numero como tal: correcto: 6002400 - incorrecto: 59346002400
+
+c) Verificar el archivo abriendolo con el bloc de notas y que tenga el siguiente formato:
+
+
+
+modificacion
+94,4647610,6016662,STD-SUS-MORA31,1
+94,14712310,6002588,STD-SUS-MORA31,2
+63,4647610,6016666,STD-SUS-MORA31,1
+
+

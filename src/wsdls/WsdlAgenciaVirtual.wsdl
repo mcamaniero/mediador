@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.grupotvcable.com.ec/AgenciaVirtual/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WsdlAgenciaVirtual"
+	targetNamespace="http://www.grupotvcable.com.ec/AgenciaVirtual/">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.grupotvcable.com.ec/AgenciaVirtual/">
+			<xsd:complexType name="Respuesta">
+				<xsd:sequence>
+					<xsd:element name="CodError" type="xsd:string"></xsd:element>
+					<xsd:element name="DetMensaje" type="xsd:string"></xsd:element>
+					<xsd:element name="Clave" type="xsd:string"></xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="RecuperarClaveRequest">
+		<wsdl:part name="username" type="xsd:string"></wsdl:part>
+		<wsdl:part name="dominio" type="xsd:string"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="RecuperarClaveResponse">
+
+		<wsdl:part name="Respuesta" type="tns:Respuesta"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="AgenciaVirtual">
+		<wsdl:operation name="RecuperarClave">
+			<wsdl:input message="tns:RecuperarClaveRequest" />
+			<wsdl:output message="tns:RecuperarClaveResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="AgenciaVirtualSOAP" type="tns:AgenciaVirtual">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="RecuperarClave">
+			<soap:operation
+				soapAction="http://www.grupotvcable.com.ec/AgenciaVirtual/RecuperarClave" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="WsdlAgenciaVirtual">
+		<wsdl:port binding="tns:AgenciaVirtualSOAP"
+			name="AgenciaVirtualSOAP">
+			<soap:address location="http://192.168.0.114:8081/WsAprovisionamiento/services/WsldAgenciaVirtual" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

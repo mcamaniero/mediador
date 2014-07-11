@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.grupotvcable.com.ec/WsdlMcAfee/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WsdlMcAfee" targetNamespace="http://www.grupotvcable.com.ec/WsdlMcAfee/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.grupotvcable.com.ec/WsdlMcAfee/" elementFormDefault="qualified">
+      <xsd:element name="McAfee">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="McAfeeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="Respuesta">
+      	<xsd:sequence>
+      		<xsd:element name="CodError" type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Codigo de Error. 1 = transaccion exitosa
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+      		<xsd:element name="DetMensaje" type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					detalle del mensaje
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+
+      		<xsd:element name="IdMcAfee" type="xsd:string"></xsd:element>
+                    <xsd:element name="Referencia" type="xsd:string"></xsd:element>
+                </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="AprovMcAfeeRequest">
+        <wsdl:part name="IdEmpresa" type="xsd:int">
+        	<wsdl:documentation>Id de las ciudades. 94 gye - 63 uio - 65 cue
+</wsdl:documentation></wsdl:part>
+        <wsdl:part name="Sistema" type="xsd:string">
+    	<wsdl:documentation>TITAN,SGN,SB</wsdl:documentation></wsdl:part>
+        <wsdl:part name="Interfaz" type="xsd:string"></wsdl:part>
+        <wsdl:part name="IdEstado" type="xsd:string">
+    	<wsdl:documentation>A,R,S,T</wsdl:documentation></wsdl:part>
+    <wsdl:part name="Cuenta" type="xsd:string">
+    	<wsdl:documentation>En Titan es el AccountID, en SGN y GT es el contrato
+</wsdl:documentation></wsdl:part>
+    <wsdl:part name="IdProducto" type="xsd:string">
+    	<wsdl:documentation>En Titan es el CpartyId, en SGN y GT es id de producto antivirus</wsdl:documentation></wsdl:part>
+    <wsdl:part name="Correo" type="xsd:string">
+    	</wsdl:part>
+
+    <wsdl:part name="PlanMcAfeeTvCable" type="xsd:int">
+    	<wsdl:documentation>Id del Producto McAfee en los sistema</wsdl:documentation></wsdl:part>
+    <wsdl:part name="ClienteCRM" type="xsd:string">
+    	<wsdl:documentation>contrato o cuenta en intraway</wsdl:documentation></wsdl:part>
+    <wsdl:part name="IdProductoCRM" type="xsd:string">
+    	<wsdl:documentation>idproducto del CableModem al cual esta asociado el producto antivirus
+, este campo es para el envio de mensajes al portal cautivo de intraway
+</wsdl:documentation></wsdl:part>
+    <wsdl:part name="IdMcAfee" type="xsd:string"></wsdl:part>
+    <wsdl:part name="Referencia" type="xsd:string"></wsdl:part>
+
+    <wsdl:part name="Nombre" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AprovMcAfeeResponse">
+    <wsdl:part name="Respuesta" type="tns:Respuesta"></wsdl:part>
+  </wsdl:message>
+    <wsdl:portType name="WsdlMcAfee">
+    <wsdl:operation name="AprovMcAfee">
+      <wsdl:input message="tns:AprovMcAfeeRequest"/>
+      <wsdl:output message="tns:AprovMcAfeeResponse"/>
+    </wsdl:operation>
+    </wsdl:portType>
+  <wsdl:binding name="WsdlMcAfeeSOAP" type="tns:WsdlMcAfee">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AprovMcAfee">
+      <soap:operation soapAction="http://www.grupotvcable.com.ec/WsdlMcAfee/AprovMcAfee"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsdlMcAfee">
+    <wsdl:port binding="tns:WsdlMcAfeeSOAP" name="WsdlMcAfeeSOAP">
+      <soap:address location="http://192.168.0.114/WsAprovisionamiento/services/WsdlMcAfee"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

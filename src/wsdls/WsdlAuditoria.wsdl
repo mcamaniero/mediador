@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tvc="http://www.grupotvcable.com.ec/WsdlAuditoria" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WsdlAuditoria" targetNamespace="http://www.grupotvcable.com.ec/WsdlAuditoria">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.grupotvcable.com.ec/WsdlAuditoria/" elementFormDefault="qualified">
+      <xsd:element name="Auditoria">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AuditoriaResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+            <xsd:element name="Negocio" type="xsd:string"></xsd:element>
+        </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="AuditoriaIwSafariRequest">
+    <wsdl:part name="Tipo" type="xsd:string">
+    	<wsdl:documentation>101 Internet
+102 Telefonia
+103 Internet y Telefonia</wsdl:documentation></wsdl:part>
+    <wsdl:part name="Sesion" type="xsd:string">
+    	<wsdl:documentation>Sesion de la Auditori</wsdl:documentation></wsdl:part>
+    <wsdl:part name="AuthKey" type="xsd:string">
+    	<wsdl:documentation>Clave
+</wsdl:documentation></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AuditoriaIwSafariResponse">
+
+    <wsdl:part name="Respuesta" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WsdlAuditoria">
+    <wsdl:operation name="AuditoriaIwSafari">
+      <wsdl:input message="tvc:AuditoriaIwSafariRequest"/>
+      <wsdl:output message="tvc:AuditoriaIwSafariResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WsdlAuditoriaSOAP" type="tvc:WsdlAuditoria">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AuditoriaIwSafari">
+      <wsdl:input>
+      	<soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsdlAuditoria">
+    <wsdl:port binding="tvc:WsdlAuditoriaSOAP" name="WsdlAuditoriaSOAP">
+      <soap:address location="http://192.168.0.114:8081/WsAprovisionamiento/services/WsdlAuditoria"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

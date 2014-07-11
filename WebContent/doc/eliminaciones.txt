@@ -1,0 +1,26 @@
+Eliminacion Masiva de Espacios
+
+/**************************/
+ *CODIGOS DE LAS CIUDADES *
+ * guayaquil: 94          *
+ * quito:     63          *
+ * cuenca:    65          *
+/**************************/
+
+CAMPOS REQUERIDOS
+Codigo_ciudad, contrato_intraway, idproducto_cablemodem
+
+Procedimiento:
+Crear un archivo .csv con comas (,)
+
+a) Para indicar que se van a realizar eliminaciones masivas, en la primera linea escribir la palabra: eliminacion.
+
+b) Verificar el archivo abriendolo con el bloc de notas y que tenga el siguiente formato:
+
+
+
+eliminacion
+94,7778888,3434343
+63,5948393,5544332
+65,3333323,6778999
+

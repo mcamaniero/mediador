@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://partners.compuredes.com.co/mcafee" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="https://partners.compuredes.com.co/mcafee" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://partners.compuredes.com.co/mcafee">
+      <s:element name="wmOrderConsumer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderConsumer" type="tns:clsOrderTransConsumer"/>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionTransaction" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="clsOrderTransConsumer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="strSesTransac" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="subPartnerID" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="tipoPeticion" type="tns:typeTipoPeticion"/>
+          <s:element minOccurs="0" maxOccurs="1" name="clienteConsumer" type="tns:clsClientConsumer"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ordenConsumer" type="tns:clsOrdenConsumer"/>
+          <s:element minOccurs="0" maxOccurs="1" name="paymentConsumer" type="tns:clsPaymentConsumer"/>
+          <s:element minOccurs="0" maxOccurs="1" name="userTrans" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="typeTipoPeticion">
+        <s:restriction base="s:string">
+          <s:enumeration value="NEW"/>
+          <s:enumeration value="UPDATE"/>
+          <s:enumeration value="UPDPROFILE"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="clsClientConsumer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Preferences" type="tns:ArrayOfClsPreferencesConsumer"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Nombres" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Apellidos" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfClsPreferencesConsumer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="clsPreferencesConsumer" nillable="true" type="tns:clsPreferencesConsumer"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="clsPreferencesConsumer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PreferenceName" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PreferenceValor" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="clsOrdenConsumer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="objArticulos" type="tns:ArrayOfClsItemsConsumer"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Referencia" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfClsItemsConsumer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="clsItemsConsumer" nillable="true" type="tns:clsItemsConsumer"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="clsItemsConsumer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="Cantidad" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Accion" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="clsPaymentConsumer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="tipoPago" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="codigoAutorizacion" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="tarjetaConsumer" type="tns:clsCreditCardConsumer"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="clsCreditCardConsumer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="tipoTarjeta" type="tns:typeCreditCard"/>
+          <s:element minOccurs="0" maxOccurs="1" name="numeroTarjeta" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="expiracionMes" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="expiracionAno" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="tarjetaNombres" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="tarjetaApellidos" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="tarjetaDir1" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="tarjetaDir2" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="tarjetaCiudad" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="tarjetaEstado" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="tarjetaZIP" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="tarjetaPais" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="tarjetaTel" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="tarjetaFax" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="typeCreditCard">
+        <s:restriction base="s:string">
+          <s:enumeration value="VISA"/>
+          <s:enumeration value="MASTERCARD"/>
+          <s:enumeration value="AMEX"/>
+          <s:enumeration value="Discover"/>
+          <s:enumeration value="Diners_Club"/>
+          <s:enumeration value="JCB"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="wmOrderConsumerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wmOrderConsumerResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wmOrderTOP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderTransTOP" type="tns:clsOrderTransTOP"/>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionTransaction" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="clsOrderTransTOP">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="subPartnerID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="subPartnerPass" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="replyAddress" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="typeOrder" type="tns:typeTipoOrder"/>
+          <s:element minOccurs="0" maxOccurs="1" name="contactTOP" type="tns:clsContactTOP"/>
+          <s:element minOccurs="0" maxOccurs="1" name="orderDetailTOP" type="tns:clsOrderDetailTOP"/>
+          <s:element minOccurs="0" maxOccurs="1" name="updateTOP" type="tns:clsUpdateTop"/>
+          <s:element minOccurs="0" maxOccurs="1" name="userTrans" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="typeTipoOrder">
+        <s:restriction base="s:string">
+          <s:enumeration value="NewOrder"/>
+          <s:enumeration value="TrialOrder"/>
+          <s:enumeration value="Update"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="clsContactTOP">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="PartnerCode" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="PartnerGeneratedContactID" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string"/>
+              <s:element minOccurs="1" maxOccurs="1" name="Salutation" type="tns:typeSaludation"/>
+              <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="AddressLine1" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="AddressLine2" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="SuiteFloor" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="CityName" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="StateProvinceCD" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="PostalCD" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="CountryCD" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="ProductLanguageCode" type="s:string"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseObject" abstract="true"/>
+      <s:complexType name="clsOrderDetailTOP">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="PartnerGeneratedOrderID" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="ProductType" type="s:string"/>
+              <s:element minOccurs="0" maxOccurs="1" name="OrderDate" type="s:string"/>
+              <s:element minOccurs="1" maxOccurs="1" name="DeskTopCount" type="s:int"/>
+              <s:element minOccurs="1" maxOccurs="1" name="NumberOfMailBoxes" type="s:int"/>
+              <s:element minOccurs="1" maxOccurs="1" name="SubscriptionLength" type="s:int"/>
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceLevel" type="s:string"/>
+              <s:element minOccurs="1" maxOccurs="1" name="PaymentType" type="s:int"/>
+              <s:element minOccurs="0" maxOccurs="1" name="ProductLanguageCode" type="s:string"/>
+              <s:element minOccurs="1" maxOccurs="1" name="orderTypeSchema" type="tns:typeOrderTypeSchema"/>
+              <s:element minOccurs="1" maxOccurs="1" name="AutoRenewalFlag" type="s:int"/>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="typeOrderTypeSchema">
+        <s:restriction base="s:string">
+          <s:enumeration value="TPFSB"/>
+          <s:enumeration value="SMS"/>
+          <s:enumeration value="TPFSBT"/>
+          <s:enumeration value="TPFSBAT"/>
+          <s:enumeration value="SMST"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="typeSaludation">
+        <s:restriction base="s:string">
+          <s:enumeration value="Mr"/>
+          <s:enumeration value="Ms"/>
+          <s:enumeration value="Mrs"/>
+          <s:enumeration value="Miss"/>
+          <s:enumeration value="Dr"/>
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="clsUpdateTop">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PartnerGeneratedOrderID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="CancelStatus" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="UpdateDate" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="wmOrderTOPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wmOrderTOPResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wmUpdateProfileTop">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderProfileTOP" type="tns:clsContactTOP"/>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionTransaction" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wmUpdateProfileTopResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wmUpdateProfileTopResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="wmOrderConsumerSoapIn">
+    <wsdl:part name="parameters" element="tns:wmOrderConsumer"/>
+  </wsdl:message>
+  <wsdl:message name="wmOrderConsumerSoapOut">
+    <wsdl:part name="parameters" element="tns:wmOrderConsumerResponse"/>
+  </wsdl:message>
+  <wsdl:message name="wmOrderTOPSoapIn">
+    <wsdl:part name="parameters" element="tns:wmOrderTOP"/>
+  </wsdl:message>
+  <wsdl:message name="wmOrderTOPSoapOut">
+    <wsdl:part name="parameters" element="tns:wmOrderTOPResponse"/>
+  </wsdl:message>
+  <wsdl:message name="wmUpdateProfileTopSoapIn">
+    <wsdl:part name="parameters" element="tns:wmUpdateProfileTop"/>
+  </wsdl:message>
+  <wsdl:message name="wmUpdateProfileTopSoapOut">
+    <wsdl:part name="parameters" element="tns:wmUpdateProfileTopResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="wsCrTransSvcSoap">
+    <wsdl:operation name="wmOrderConsumer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Metodo Web para transacciones de CONSUMER</wsdl:documentation>
+      <wsdl:input message="tns:wmOrderConsumerSoapIn"/>
+      <wsdl:output message="tns:wmOrderConsumerSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="wmOrderTOP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Metodo Web para transacciones de TOP</wsdl:documentation>
+      <wsdl:input message="tns:wmOrderTOPSoapIn"/>
+      <wsdl:output message="tns:wmOrderTOPSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="wmUpdateProfileTop">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Metodo Web</wsdl:documentation>
+      <wsdl:input message="tns:wmUpdateProfileTopSoapIn"/>
+      <wsdl:output message="tns:wmUpdateProfileTopSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsCrTransSvcSoap" type="tns:wsCrTransSvcSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="wmOrderConsumer">
+      <soap:operation soapAction="https://partners.compuredes.com.co/mcafee/wmOrderConsumer" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wmOrderTOP">
+      <soap:operation soapAction="https://partners.compuredes.com.co/mcafee/wmOrderTOP" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wmUpdateProfileTop">
+      <soap:operation soapAction="https://partners.compuredes.com.co/mcafee/wmUpdateProfileTop" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsCrTransSvcSoap12" type="tns:wsCrTransSvcSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="wmOrderConsumer">
+      <soap12:operation soapAction="https://partners.compuredes.com.co/mcafee/wmOrderConsumer" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wmOrderTOP">
+      <soap12:operation soapAction="https://partners.compuredes.com.co/mcafee/wmOrderTOP" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wmUpdateProfileTop">
+      <soap12:operation soapAction="https://partners.compuredes.com.co/mcafee/wmUpdateProfileTop" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsCrTransSvc">
+    <wsdl:port name="wsCrTransSvcSoap" binding="tns:wsCrTransSvcSoap">
+      <soap:address location="http://testmc.compuredes.com.co/mcafee/wsCrTransSvc.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="wsCrTransSvcSoap12" binding="tns:wsCrTransSvcSoap12">
+      <soap12:address location="http://testmc.compuredes.com.co/mcafee/wsCrTransSvc.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

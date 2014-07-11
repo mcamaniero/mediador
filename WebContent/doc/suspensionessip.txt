@@ -1,0 +1,29 @@
+Suspensiones Masiva de Lineas en Safari
+
+/**************************/
+ *CODIGOS DE LAS CIUDADES *
+ * Guayaquil: 94          *
+ * Quito:     63          *
+/**************************/
+
+CAMPOS REQUERIDOS
+Codigo_ciudad, numero_telefono,homeexchange
+
+Procedimiento:
+Crear un archivo .csv con comas (,)
+Los numero telefonicos debe de constar con el prefijo 593X
+
+a) Para indicar que se van a realizar suspensiones masivas, en la primera linea escribir la palabra: modificacion
+
+b) Indicar el HomeExchange que se desea modificar, este puede ser STD-FULL-POST, STD-SUS-MORA31, etc.
+Si se asigna STD-SUS-MORA31 o STD-SUS-TITULAR; automaticamente se pondran las lineas con estado SUSPENDIDO, los demas homeexchange se pondran con estado ACTIVO.
+
+c) Verificar el archivo abriendolo con el bloc de notas y que tenga el siguiente formato:
+
+
+
+modificacion
+94,59346002400,STD-SUS-MORA31
+63,59326002400,STD-SUS-MORA31
+94,59346002401,STD-SUS-MORA31
+

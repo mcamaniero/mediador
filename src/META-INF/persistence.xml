@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+    http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
+       
+	<persistence-unit name="TitanPU">
+		<provider>
+			oracle.toplink.essentials.PersistenceProvider
+		</provider>
+
+		<class>com.app.tv.adm_ciudad.dao.AdmCiudad</class>
+		<class>com.app.tv.tvp_ordendac.dao.TvpOrdendac</class>
+		<class>com.app.tv.tvp_ordenacc.dao.TvpOrdenacc</class>
+		<class>com.app.tv.tvp_equicomandos.dao.TvpEquicomandos</class>
+		<class>com.app.tv.adm_errores.dao.AdmErrores</class>
+		<class>com.app.tv.tvp_puertosACC.dao.TvpPuertosAcc</class>
+
+		<class>com.app.dao.Intraway</class>
+		<class>com.app.dao.TvPagada</class>
+		<class>com.app.dao.Safari</class>
+		<class>com.app.dao.Auris</class>
+
+		<class>com.app.tv.adm_errorestvp.dao.AdmErrorestvp</class>
+		<class>com.app.tv.tvp_equivalencias.dao.TvpEquivalencias</class>
+		<class>com.app.tv.tvp_channelmap.dao.TvpChannelmap</class>
+
+		<class>
+			com.app.tv.tvp_serviciospaychannelsciudad.dao.TvpServiciosPayChannelsCiudad
+		</class>
+		<class>com.app.tv.tvp_tipodeco.dao.TvpTipodeco</class>
+		<class>
+			com.app.tv.tvp_recoleccionPPV.dao.TvpRecoleccionPpv
+		</class>
+		<class>com.app.tv.tvp_puertosDAC.TvpPuertosDac</class>
+		<class>com.app.tv.tvp_Dalvi.dao.TvpDalvi</class>
+		<class>com.app.tv.tvp_puertosDHDAC.TvpPuertosDhdac</class>
+		<class>com.app.tv.tvp_puertosDHACC.TvpPuertosDhacc</class>
+		<class>com.app.tv.log_TvPagada.LogTvPagada</class>
+		<class>com.app.dao.usuarioiw.AdmUsuarioIntraway</class>
+
+		<class>com.app.dao.usuarioiw.AdmUsuarioIntrawayId</class>
+		<class>com.app.dao.conciliacion.AdmConciliacion</class>
+
+		<class>com.app.dao.conciliacion.cms.AdmConciliacionCms</class>
+		<class>
+			com.app.dao.conciliacion.linea.AdmConciliacionLinea
+		</class>
+
+
+		<class>
+			com.app.tv.tvp_consultatvfinish.dao.TvpConsultatvfinish
+		</class>
+		<class>com.app.tv.tvp_consultatv.dao.TvpConsultatv</class>
+		<class>com.app.tv.tvp_admsessions.dao.AdmSessions</class>
+		<class>com.app.tv.adm_promociones.dao.AdmPromociones</class>
+
+		<class>com.app.tv.adm_contratos.dao.AdmContratos</class>
+		<class>com.app.tv.adm_user_pruebas.dao.AdmUserPruebas</class>
+
+		<class>com.app.mcafee.dao.LogMcAfee</class>
+		<class>com.app.mcafee.dao.McafCliente</class>
+		<class>com.app.mcafee.dao.McafSku</class>
+		<class>com.app.mcafee.dao.McafTransaccion</class>
+		<class>com.app.mcafee.dao.McafDettransaccion</class>
+		<class>com.app.tv.tvp_parametros.dao.TvpParametros</class>
+		<properties>
+			<property name="toplink.jdbc.driver"
+				value="com.mysql.jdbc.Driver" />
+			<property name="toplink.jdbc.url"
+				value="jdbc:mysql://192.168.21.206:3306/aprovgrupotv?autoReconnect=true" />
+			<property name="toplink.jdbc.user" value="commconax" />
+			<property name="toplink.jdbc.password" value="conaxuio" />
+			<property name="toplink.jdbc.read-connections.max"
+				value="999999" />
+			<property name="toplink.jdbc.read-connections.min"
+				value="0" />
+			<property name="toplink.jdbc.write-connections.max"
+				value="9999999" />
+			<property name="toplink.jdbc.write-connections.min"
+				value="0" />
+			<property name="toplink.cache.size.default" value="5000" />
+
+		</properties>
+	</persistence-unit>
+
+
+
+	<persistence-unit name="IntrawayPU">
+		<provider>oracle.toplink.essentials.PersistenceProvider</provider>
+		<properties>
+			<property name = "toplink.jdbc.driver" value = "oracle.jdbc.driver.OracleDriver"/>
+			<property name = "toplink.jdbc.url" value = "jdbc:oracle:thin:@//200.63.212.112:1521/iway"/>
+			<property name = "toplink.jdbc.user" value = "ws"/>
+			<property name = "toplink.jdbc.password" value = "ws"/>
+			<property name = "toplink.jdbc.read-connections.max" value="999999" />
+	  	</properties>
+	</persistence-unit>
+	
+	
+	<persistence-unit name="TitanBSCC">
+		<provider>oracle.toplink.essentials.PersistenceProvider</provider>
+  		<properties>
+			<property name = "toplink.jdbc.driver" value = "oracle.jdbc.driver.OracleDriver"/>
+			<property name = "toplink.jdbc.url" value = "jdbc:oracle:thin:@//192.168.31.171:1521/sql"/>
+			<property name = "toplink.jdbc.user" value = "bs"/>
+			<property name = "toplink.jdbc.password" value = "bs"/>
+	  	</properties>
+	</persistence-unit>
+		
+		
+	<persistence-unit name="TitanBILLCC">
+		<provider>oracle.toplink.essentials.PersistenceProvider</provider>
+  		<properties>
+			<property name = "toplink.jdbc.driver" value = "oracle.jdbc.driver.OracleDriver"/>
+			<property name = "toplink.jdbc.url" value = "jdbc:oracle:thin:@//192.168.31.224:1522/atest"/>
+			<property name = "toplink.jdbc.user" value = "bs"/>
+			<property name = "toplink.jdbc.password" value = "bs"/>
+	  	</properties>
+	</persistence-unit>
+		
+	
+	<persistence-unit name="TitanBSCCR">
+		<provider>oracle.toplink.essentials.PersistenceProvider</provider>
+  		<properties>
+			<property name = "toplink.jdbc.driver" 		value = "oracle.jdbc.driver.OracleDriver"/>
+			<property name = "toplink.jdbc.url" 		value = "jdbc:oracle:thin:@//192.168.31.67:1522/tytane"/>
+			<property name = "toplink.jdbc.user" 		value = "bs"/>
+			<property name = "toplink.jdbc.password" 	value = "bs"/>
+	  	</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="TitanBSDESA">
+		<provider>oracle.toplink.essentials.PersistenceProvider</provider>
+		<properties>
+			<property name = "toplink.jdbc.driver"   value = "oracle.jdbc.driver.OracleDriver"/>
+			<property name = "toplink.jdbc.url"   value = "jdbc:oracle:thin:@//192.168.31.220:1521/TYTTEST"/>
+			<property name = "toplink.jdbc.user"   value = "bsdesa"/>
+			<property name = "toplink.jdbc.password"  value = "bsdesa "/>
+		</properties>
+	</persistence-unit>
+	
+</persistence>

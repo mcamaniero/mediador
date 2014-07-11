@@ -1,0 +1,26 @@
+Eliminacion Masiva de Lineas en Safari
+
+/**************************/
+ *CODIGOS DE LAS CIUDADES *
+ * Guayaquil: 94          *
+ * Quito:     63          *
+/**************************/
+
+CAMPOS REQUERIDOS
+Codigo_ciudad, numero_telefono
+
+Procedimiento:
+Crear un archivo .csv con comas (,)
+Los numero telefonicos debe de constar con el prefijo 593X
+
+a) Para indicar que se van a realizar eliminaciones masivas, en la primera linea escribir la palabra: eliminacion
+
+b) Verificar el archivo abriendolo con el bloc de notas y que tenga el siguiente formato:
+
+
+
+eliminacion
+94,59346002400
+63,59326002400
+94,59346002401
+

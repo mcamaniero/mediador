@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.grupotvcable.com.ec/WsdlExterno/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WsdlExterno" targetNamespace="http://www.grupotvcable.com.ec/WsdlExterno/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.grupotvcable.com.ec/WsdlExterno/">
+      <xsd:element name="Cuentas">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AprovisionarCuenta" type="tns:AprovisionarCuenta"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      
+      <xsd:element name="CuentasResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Respuesta" type="tns:Respuesta"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+	<xsd:element name="Direcciones">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="AprovisionarDirecciones" type="tns:AprovisionarDirecciones"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+     
+     
+      <xsd:element name="DireccionesResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="Direcciones" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Productos">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="in" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ProductosResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    
+      <xsd:simpleType name="Ciudad">
+      	<xsd:restriction base="xsd:string">
+      		<xsd:enumeration value="GUAYAQUIL"></xsd:enumeration>
+      		<xsd:enumeration value="QUITO"></xsd:enumeration>
+      	</xsd:restriction>
+      </xsd:simpleType>
+    
+      <xsd:simpleType name="TipoID">
+      	<xsd:restriction base="xsd:string">
+      		<xsd:enumeration value="RUC"></xsd:enumeration>
+      		<xsd:enumeration value="CEDULA"></xsd:enumeration>
+      	</xsd:restriction>
+      </xsd:simpleType>
+    
+      <xsd:simpleType name="Estado">
+      	<xsd:restriction base="xsd:string">
+      		<xsd:enumeration value="ACTIVO"></xsd:enumeration>
+      		<xsd:enumeration value="INACTIVO"></xsd:enumeration>
+      		<xsd:enumeration value="SEMICORTE"></xsd:enumeration>
+      		<xsd:enumeration value="CORTE"></xsd:enumeration>
+      		<xsd:enumeration value="TERMINADO"></xsd:enumeration>
+      	</xsd:restriction>
+      </xsd:simpleType>
+
+      <xsd:simpleType name="TipoDireccion">
+      	<xsd:restriction base="xsd:string">
+      		<xsd:enumeration value="DIRECCION"></xsd:enumeration>
+      		<xsd:enumeration value="TELEFONO"></xsd:enumeration>
+      		<xsd:enumeration value="EMAIL"></xsd:enumeration>
+      	</xsd:restriction>
+      </xsd:simpleType>
+    
+      <xsd:simpleType name="Accion">
+      	<xsd:restriction base="xsd:string">
+      		<xsd:enumeration value="INGRESAR"></xsd:enumeration>
+      		<xsd:enumeration value="MODIFICAR"></xsd:enumeration>
+      		<xsd:enumeration value="INACTIVAR"></xsd:enumeration>
+      	</xsd:restriction>
+      </xsd:simpleType>
+    
+      <xsd:complexType name="AprovisionarCuenta">
+      	<xsd:sequence>
+      		<xsd:element name="CodCliente" type="xsd:string"></xsd:element>
+      		<xsd:element name="Ciudad" type="tns:Ciudad"></xsd:element>
+      		<xsd:element name="Nombre" type="xsd:string"></xsd:element>
+      		<xsd:element name="TipoId" type="tns:TipoID"></xsd:element>
+      		<xsd:element name="Identificacion" type="xsd:string"></xsd:element>
+      		<xsd:element name="Estado" type="tns:Estado"></xsd:element>
+      		<xsd:element name="Fecha" type="xsd:dateTime"></xsd:element>
+      		<xsd:element name="CustomText_1" type="xsd:string"></xsd:element>
+      		<xsd:element name="CustomText_2" type="xsd:string"></xsd:element>
+      		<xsd:element name="CustomText_3" type="xsd:string"></xsd:element>
+      		<xsd:element name="CustomText_4" type="xsd:string"></xsd:element>
+      		<xsd:element name="CustomText_5" type="xsd:string"></xsd:element>
+      		<xsd:element name="CustomNumber_1" type="xsd:int"></xsd:element>
+      		<xsd:element name="CustomNumber_2" type="xsd:int"></xsd:element>
+      		<xsd:element name="CustomNumber_3" type="xsd:int"></xsd:element>
+      		<xsd:element name="CustomNumber_4" type="xsd:int"></xsd:element>
+      		<xsd:element name="CustomNumber_5" type="xsd:int"></xsd:element>
+      		<xsd:element name="CustomDate_1" type="xsd:dateTime"></xsd:element>
+      		<xsd:element name="CustomDate_2" type="xsd:dateTime"></xsd:element>
+      		<xsd:element name="CustomDate_3" type="xsd:dateTime"></xsd:element>
+      		<xsd:element name="CustomDate_4" type="xsd:dateTime"></xsd:element>
+      		<xsd:element name="CustomDate_5" type="xsd:dateTime"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="Respuesta">
+      	<xsd:sequence>
+      		<xsd:element name="CodError" type="xsd:string"></xsd:element>
+      		<xsd:element name="DetMensaje" type="xsd:string"></xsd:element>
+      		<xsd:element name="CustomText_1" type="xsd:string"></xsd:element>
+      		<xsd:element name="CustomText_2" type="xsd:string"></xsd:element>
+      		<xsd:element name="CustomText_3" type="xsd:string"></xsd:element>
+      		<xsd:element name="CustomText_4" type="xsd:string"></xsd:element>
+      		<xsd:element name="CustomText_5" type="xsd:string"></xsd:element>
+      		<xsd:element name="CustomNumber_1" type="xsd:int"></xsd:element>
+      		<xsd:element name="CustomNumber_2" type="xsd:int"></xsd:element>
+      		<xsd:element name="CustomNumber_3" type="xsd:int"></xsd:element>
+      		<xsd:element name="CustomNumber_4" type="xsd:int"></xsd:element>
+      		<xsd:element name="CustomNumber_5" type="xsd:int"></xsd:element>
+      		<xsd:element name="CustomDate_1" type="xsd:dateTime"></xsd:element>
+      		<xsd:element name="CustomDate_2" type="xsd:dateTime"></xsd:element>
+      		<xsd:element name="CustomDate_3" type="xsd:dateTime"></xsd:element>
+      		<xsd:element name="CustomDate_4" type="xsd:dateTime"></xsd:element>
+      		<xsd:element name="CustomDate_5" type="xsd:dateTime"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+    
+      <xsd:complexType name="AprovisionarDirecciones">
+      	<xsd:sequence>
+      		<xsd:element name="CodCliente" type="xsd:string"></xsd:element>
+      		<xsd:element name="Ciudad" type="tns:Ciudad"></xsd:element>
+      		<xsd:element name="Nombre" type="xsd:string"></xsd:element>
+      		<xsd:element name="TipoId" type="tns:TipoID"></xsd:element>
+      		<xsd:element name="Identificacion" type="xsd:string"></xsd:element>
+      		<xsd:element name="Estado" type="tns:Estado"></xsd:element>
+      		<xsd:element name="Fecha" type="xsd:dateTime"></xsd:element>
+      		<xsd:element name="CustomText_1" type="xsd:string"></xsd:element>
+      		<xsd:element name="CustomText_2" type="xsd:string"></xsd:element>
+      		<xsd:element name="CustomText_3" type="xsd:string"></xsd:element>
+      		<xsd:element name="CustomText_4" type="xsd:string"></xsd:element>
+      		<xsd:element name="CustomText_5" type="xsd:string"></xsd:element>
+      		<xsd:element name="CustomNumber_1" type="xsd:int"></xsd:element>
+      		<xsd:element name="CustomNumber_2" type="xsd:int"></xsd:element>
+      		<xsd:element name="CustomNumber_3" type="xsd:int"></xsd:element>
+      		<xsd:element name="CustomNumber_4" type="xsd:int"></xsd:element>
+      		<xsd:element name="CustomNumber_5" type="xsd:int"></xsd:element>
+      		<xsd:element name="CustomDate_1" type="xsd:dateTime"></xsd:element>
+      		<xsd:element name="CustomDate_2" type="xsd:dateTime"></xsd:element>
+      		<xsd:element name="CustomDate_3" type="xsd:dateTime"></xsd:element>
+      		<xsd:element name="CustomDate_4" type="xsd:dateTime"></xsd:element>
+      		<xsd:element name="CustomDate_5" type="xsd:dateTime"></xsd:element>
+      	</xsd:sequence>
+
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="CuentasRequest">
+    <wsdl:part element="tns:Cuentas" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="CuentasResponse">
+    <wsdl:part element="tns:CuentasResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="DireccionesRequest">
+  	<wsdl:part name="parameters" element="tns:Direcciones"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DireccionesResponse">
+  	<wsdl:part name="parameters" element="tns:DireccionesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ProductosRequest">
+  	<wsdl:part name="parameters" element="tns:Productos"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ProductosResponse">
+  	<wsdl:part name="parameters" element="tns:ProductosResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WsdlExterno">
+    <wsdl:operation name="Cuentas">
+      <wsdl:input message="tns:CuentasRequest"/>
+      <wsdl:output message="tns:CuentasResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="Direcciones">
+    	<wsdl:input message="tns:DireccionesRequest"></wsdl:input>
+    	<wsdl:output message="tns:DireccionesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Productos">
+    	<wsdl:input message="tns:ProductosRequest"></wsdl:input>
+    	<wsdl:output message="tns:ProductosResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WsdlExternoSOAP" type="tns:WsdlExterno">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Cuentas">
+      <soap:operation soapAction="http://www.grupotvcable.com.ec/WsdlExterno/NewOperation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsdlExterno">
+    <wsdl:port binding="tns:WsdlExternoSOAP" name="WsdlExternoSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

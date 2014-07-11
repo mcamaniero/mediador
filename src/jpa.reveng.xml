@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table name="adm_errorestvp" catalog="aprovgrupotv">
+		<column name="str_errorDac" />
+		<column name="str_errorAcc" />
+		<column name="str_errorDalvi" />
+		<column name="str_error" />
+		<column name="str_error_string" />
+	</table>
+	<table name="TAMCONTRACTEDITEMD" schema="BILLCC">
+		<column name="PARENT_ID" exclude="true" />
+		<column name="APNAMED_ID" exclude="true" />
+		<column name="ISAPNAMEMODIFIED" exclude="true" />
+		<column name="ISARCHIVED" exclude="true" />
+		<column name="OFFERPACKAGECITEM_ID" exclude="true" />
+		<column name="CUSTOMNAME" exclude="true" />
+		<column name="EXCHANGETYPE" exclude="true" />
+		<column name="EXCHANGETABLE_ID" exclude="true" />
+		<column name="BCYCLESOURCE" exclude="true" />
+		<column name="BCYCLEOFFSETMODE" exclude="true" />
+		<column name="BCYCLECALCMODE" exclude="true" />
+		<column name="CALCCOMPENSATIONMODE" exclude="true" />
+		<column name="CONTRACTDATE" exclude="true" />
+		<column name="PARENTEARLYTERMEVENTCLASS_ID" exclude="true" />
+		<column name="EARLYTERMINATIONEVENTCLASS_ID" exclude="true" />
+		<column name="FINALCONTRACTEDTO" exclude="true" />
+		<column name="FINALCONTRACTEDFROM" exclude="true" />
+		<column name="SUBSCRIBERGROUP_ID" exclude="true" />
+		<column name="TERMINATIONEVENTCLASS_ID" exclude="true" />
+		<column name="ACTIVATIONEVENTCLASS_ID" exclude="true" />
+		<column name="ORDEREVENTCLASS_ID" exclude="true" />
+		<column name="ACTIVATEWITHPARENT" exclude="true" />
+		<column name="LASTACTIVECPARTY_ID" exclude="true" />
+		<column name="MULTIPLICITY" exclude="true" />
+		<column name="ISCUSTOMRATINGDEFINED" exclude="true" />
+		<column name="ATX_ID" exclude="true" />
+		<column name="ATIME" exclude="true" />
+		<column name="TTX_ID" exclude="true" />
+		<column name="MTX_ID" exclude="true" />
+		<column name="CTX_ID" exclude="true" />
+		<column name="PRODUCTFINDOCTYPEPREMISE_ID" exclude="true" />
+		<column name="NEXTCITEM_ID" exclude="true" />
+		<column name="ROOTNEXTCITEM_ID" exclude="true" />
+		<column name="PREVCITEM_ID" exclude="true" />
+		<column name="ROOTPREVCITEM_ID" exclude="true" />
+		<column name="CONTRACT_ID" exclude="true" />
+		<column name="HASINDIVIDUALPARAMS" exclude="true" />
+		<column name="ISCHARGESPLITDEFINED" exclude="true" />
+		<column name="TORECALCULATION" exclude="true" />
+		<column name="COSTCENTER_ID" exclude="true" />
+		<column name="LOBBYISTACCOUNT_ID" exclude="true" />
+		<column name="LOBBYIST_ID" exclude="true" />
+		<column name="DEALERACCOUNT_ID" exclude="true" />
+		<column name="DEALER_ID" exclude="true" />
+		<column name="APNETWORKNODE_ID" exclude="true" />
+		<column name="APTAXJURISDICTION_ID" exclude="true" />
+		<column name="CPACCOUNTTAXJURISDICTION_ID" exclude="true" />
+		<column name="CPACCOUNTTAXEXEMPTION_ID" exclude="true" />
+		<column name="CPACCOUNTTAXGROUP_ID" exclude="true" />
+		<column name="CPARTYTAXJURISDICTION_ID" exclude="true" />
+		<column name="TERMINATEDREASON_ID" exclude="true" />
+		<column name="CHANGEREASON_ID" exclude="true" />
+		<column name="ISVALID" exclude="true" />
+		<column name="SPDTO" exclude="true" />
+		<column name="DTO" exclude="true" />
+		<column name="DFROM" exclude="true" />
+		<column name="TAXEXEMPTION_ID" exclude="true" />
+		<column name="TAXGROUP_ID" exclude="true" />
+		<column name="CLASSIFICATIONTABLE_ID" exclude="true" />
+		<column name="DESTINATIONPREFIXTABLE_ID" exclude="true" />
+		<column name="PACKAGEPRICINGTO" exclude="true" />
+		<column name="MAXPARENTMINCONTRACTEDTO" exclude="true" />
+		<column name="PARENTMINCONTRACTEDTO" exclude="true" />
+		<column name="MINCONTRACTEDTO" exclude="true" />
+		<column name="ORIGINALCONTRACTEDFROM" exclude="true" />
+		<column name="SPCONTRACTEDTO" exclude="true" />
+		<column name="SPCONTRACTEDFROM" exclude="true" />
+		<column name="CONTRACTEDTO" exclude="true" />
+		<column name="CONTRACTEDFROM" exclude="true" />
+		<column name="ISCLOSED" exclude="true" />
+		<column name="STATE" exclude="true" />
+		<column name="AGGREGATIONLEVEL" exclude="true" />
+		<column name="BILLABLECPARTYACCOUNT_ID" exclude="true" />
+		<column name="BILLABLECPARTY_ID" exclude="true" />
+		<column name="ACCHIERARCHY" exclude="true" />
+		<column name="CPARTYACCOUNT_ID" exclude="true" />
+		<column name="CPARTY_ID" exclude="true" />
+		<column name="BILLCYCLEDEF_ID" exclude="true" />
+		<column name="BPROVIDER_ID" exclude="true" />
+		<column name="APTYPECONFIG_ID" exclude="true" />
+		<column name="APTYPE_ID" exclude="true" />
+		<column name="APNAME_ID" exclude="true" />
+		<column name="APINSTANCE_ID" exclude="true" />
+		<column name="APACCESSMODE" exclude="true" />
+		<column name="PRODUCTPRICING_ID" exclude="true" />
+		<column name="PACKAGEDPRODUCT_ID" exclude="true" />
+		<column name="PRODUCT_ID" exclude="true" />
+		<column name="PACKAGE_ID" exclude="true" />
+		<column name="TARIFFPLANVARIANT_ID" exclude="true" />
+		<column name="TARIFFPLAN_ID" exclude="true" />
+		<column name="ROOTCITEM_ID" exclude="true" />
+		<column name="REQCITEM_ID" exclude="true" />
+		<column name="PACKAGECITEM_ID" exclude="true" />
+	</table>
+	<table name="adm_sessions" catalog="aprovgrupotv">
+		<column name="sesion_fecha" exclude="true" />
+		<column name="sesion_tv" exclude="true" />
+		<column name="sesion_tv_fecha" exclude="true" />
+		<column name="sesion_usuario" exclude="true" />
+		<column name="session_usuario_maquina" exclude="true" />
+	</table>
+	<table name="TSPACTIONQUEUE" schema="BILLCC">
+		<column name="ROOTACTION_ID" exclude="true" />
+		<column name="REQUIREDACTION_ID" exclude="true" />
+		<column name="REQCITEM_ID" exclude="true" />
+		<column name="NETWORKNODE_ID" exclude="true" />
+		<column name="CPARTY_ID" exclude="true" />
+		<column name="CITEM_ID" exclude="true" />
+		<column name="CITEMD_ID" exclude="true" />
+		<column name="APINSTANCE_ID" exclude="true" />
+		<column name="APNAME_ID" exclude="true" />
+		<column name="NETWORKSERVICE_ID" exclude="true" />
+		<column name="ENABLEAUTOACTIVATION" exclude="true" />
+		<column name="NEXTEXECUTIONDATE" exclude="true" />
+		<column name="CONTEXTPARAMETERDEF_ID" exclude="true" />
+		<column name="CONTEXTVALUE" exclude="true" />
+		<column name="ACTIONDEF_ID" exclude="true" />
+		<column name="CITEMACTIVITY" exclude="true" />
+		<column name="WFPROCESSDEF_ID" exclude="true" />
+		<column name="WFPROCESS_ID" exclude="true" />
+		<column name="REQUESTREASON_ID" exclude="true" />
+		<column name="REQUESTEDDATE"/>
+		<column name="REQUESTTX_ID" exclude="true" />
+		<column name="LASTSENTDATE" exclude="true" />
+		<column name="NOOFRETRIES" exclude="true" />
+		<column name="ACTIONRESULT" exclude="true" />
+		<column name="RESPONSEDATE" exclude="true" />
+		<column name="RESPONSEREASON_ID" exclude="true" />
+		<column name="RESPONSEMESSAGE_ID" exclude="true" />
+		<column name="RESPONSEMESSAGECODE" exclude="true" />
+		<column name="RESPONSEACTION" exclude="true" />
+		<column name="RESPONSETX_ID" exclude="true" />
+		<column name="CANCELLEDACTION_ID" exclude="true" />
+		<column name="CTX_ID" exclude="true" />
+		<column name="MTX_ID" exclude="true" />
+		<column name="TMP_RESPONSESPHOST" exclude="true" />
+		<column name="WFLPROCESSINSTANCE_ID" exclude="true" />
+		<column name="HASHVALUE" exclude="true" />
+		<column name="NOOFRETRIESFORHASHINGMODE" exclude="true" />
+		<column name="PRIORITY" exclude="true" />
+		<column name="PRIMARYACTION_ID" exclude="true" />
+		<column name="FINALOPERATIONSTATUS" exclude="true" />
+		<column name="FINALOPERATIONEXCEPTIONLOG_ID" exclude="true" />
+		<column name="ASYNCPROCESSINGMODE" exclude="true" />
+		<column name="ACTIONREPORT_ID" exclude="true"/>
+	</table>
+</hibernate-reverse-engineering>

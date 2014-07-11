@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:saf="http://www.grupotvcable.com.ec/WsdlSafari/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WsdlSafari"
+	targetNamespace="http://www.grupotvcable.com.ec/WsdlSafari/">
+	<wsdl:types>
+		<xsd:schema
+			targetNamespace="http://www.grupotvcable.com.ec/WsdlSafari/"
+			elementFormDefault="qualified">
+			<xsd:element name="AprovSafari">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ejecutaComando"
+							type="saf:Comando" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="AprovSafariResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="consultaRespuesta"
+							type="saf:Respuesta" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:complexType name="Respuesta">
+				<xsd:sequence>
+					<xsd:element name="Cabecera" type="saf:Cabecera"></xsd:element>
+
+					<xsd:element name="Mensaje" type="saf:Mensaje"></xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="Cabecera">
+				<xsd:sequence>
+					<xsd:element name="IDEmpresa" type="xsd:int">
+
+						<xsd:annotation>
+							<xsd:documentation>
+								Código de la ciudad del negocio.
+							</xsd:documentation>
+						</xsd:annotation>
+
+					</xsd:element>
+					<xsd:element name="Negocio" type="xsd:int">
+						<xsd:annotation>
+							<xsd:documentation>
+								Se especifica el negocio, para el
+								proceso de aprovisionamiento el negocio
+								no es lo mismo que las empresas
+								definidas por Comarch para el Grupo
+								TvCable.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Interface" type="xsd:int">
+						<xsd:annotation>
+							<xsd:documentation>
+								Interfaces o Comandos que se ejecutara o
+								acción en los controladores.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Secuencia" type="xsd:int">
+						<xsd:annotation>
+							<xsd:documentation>
+								Número Secuencial para tener un control
+								de los comandos enviados.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="Detalle">
+				<xsd:sequence>
+					<xsd:element name="Safari" type="saf:Safari"></xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="Mensaje">
+				<xsd:sequence>
+					<xsd:element name="CodError" type="xsd:int">
+						<xsd:annotation>
+							<xsd:documentation>
+								Código del Error que dio el controlador
+								al procesar el comando.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="DetMensaje" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								Descripción del Error que se presento al
+								procesar el comando.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="Safari">
+				<xsd:sequence>
+					<xsd:element name="Estado" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								Es el estado de la Línea o Contrato.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Telefono" type="xsd:int">
+						<xsd:annotation>
+							<xsd:documentation>
+								Es el número telefónico a procesar en el
+								comando de la Cuenta o Contrato del
+								cliente.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="IdTroncal" type="xsd:int">
+						<xsd:annotation>
+							<xsd:documentation>
+								Es el código de la troncal por la cual
+								se realizaran las comunicaciones de los
+								números telefónicos. Esto es Exclusivo
+								para E1.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Plan" type="xsd:int">
+						<xsd:annotation>
+							<xsd:documentation>
+								Es el código del Plan o Servicio que
+								tiene activo los clientes.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="NumPiloto" type="xsd:int">
+						<xsd:annotation>
+							<xsd:documentation>
+								Es el numero piloto a cortar de la
+								Cuenta o Contrato.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Ip" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								IP de la caja SIP destino.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="EndpointProfile"
+						type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								Este parámetro debe ser obligatoriamente
+								ingresado y se pede escoger entre los
+								siguientes valores:
+
+
+
+
+
+								SIP_xDSL
+
+								SIP_ZHONE_POST
+
+								SIP_WIMAX
+
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Citem" type="xsd:int">
+						<xsd:annotation>
+							<xsd:documentation>
+								Este valor es el número del contrato del
+								cliente.
+
+
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="User" type="xsd:int">
+						<xsd:annotation>
+							<xsd:documentation>
+								Usuario utilizado para autentificar al
+								usuario SIP. Por procedimiento este
+								valor debe ser igual al numero
+								telefónico asignado.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Password" type="xsd:int">
+						<xsd:annotation>
+							<xsd:documentation>
+								Password utilizado para autenticar al
+								usuario SIP.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Lenguaje" type="xsd:int">
+						<xsd:annotation>
+							<xsd:documentation>
+								Se debe configurar a 2 este valor.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="BarredLevelType"
+						type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								SE utiliza para activar los niveles de
+								bloqueo que el usuario requiera, los
+								valores para esta propiedad son:
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="TarriffPlan" type="xsd:int">
+						<xsd:annotation>
+							<xsd:documentation>
+								El código del plan de tarifa.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="BarredPin" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								Se utiliza para asignar la clave que el
+								usuario utilizara para activar o
+								desactivar el bloqueo de llamadas desde
+								el aparato telefónico. El pin debe ser
+								siempre de cuatro dígitos.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Feature" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								Es los tipos de propiedades que puede
+								tomar la línea telefónica.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="Accion" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								Es la acción que se dará al campo
+								Feature.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="DatoS1" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								Dato libre para comandos de Safari
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="DatoS2" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								Dato libre para comandos de Safari
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="DatoS3" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								Dato libre para comandos de Safari
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="DatoS4" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								Dato libre para comandos de Safari
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="Comando">
+				<xsd:sequence>
+					<xsd:element name="Cabecera" type="saf:Cabecera"></xsd:element>
+					<xsd:element name="Detalle" type="saf:Detalle"></xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="AprovSafariRequest">
+		<wsdl:part element="saf:AprovSafari" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="AprovSafariResponse">
+		<wsdl:part element="saf:AprovSafariResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:portType name="WsdlSafari">
+		<wsdl:operation name="AprovSafari">
+			<wsdl:input message="saf:AprovSafariRequest" />
+			<wsdl:output message="saf:AprovSafariResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="WsdlSafariSOAP" type="saf:WsdlSafari">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="AprovSafari">
+			<soap:operation
+				soapAction="http://www.grupotvcable.com.ec/WsdlSafari/AprovSafari" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="WsdlSafari">
+		<wsdl:port binding="saf:WsdlSafariSOAP" name="WsdlSafariSOAP">
+			<soap:address
+				location="http://192.168.0.108/WsAprovisionamiento/services/WsdlSafari" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

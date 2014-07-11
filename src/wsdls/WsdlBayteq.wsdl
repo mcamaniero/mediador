@@ -1,0 +1,441 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" name="TvCableIntegrationService" targetNamespace="http://tempuri.org/">
+<wsdl:types>
+<xsd:schema targetNamespace="http://tempuri.org/Imports">
+<xsd:import schemaLocation="http://ns.bayteq.com:8090/TvCableIntegrationService.svc?xsd=xsd0" namespace="http://tempuri.org/"/>
+<xsd:import schemaLocation="http://ns.bayteq.com:8090/TvCableIntegrationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+<xsd:import schemaLocation="http://ns.bayteq.com:8090/TvCableIntegrationService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TvCable.Integration.Service"/>
+<xsd:import schemaLocation="http://ns.bayteq.com:8090/TvCableIntegrationService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+<xsd:import schemaLocation="http://ns.bayteq.com:8090/TvCableIntegrationService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/TvCable.Integration.Service.WRTuvesService"/>
+<xsd:import schemaLocation="http://ns.bayteq.com:8090/TvCableIntegrationService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System.ComponentModel"/>
+<xsd:import schemaLocation="http://ns.bayteq.com:8090/TvCableIntegrationService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/System"/>
+</xsd:schema>
+</wsdl:types>
+<wsdl:message name="ITvCableIntegrationService_Install_InputMessage">
+<wsdl:part name="parameters" element="tns:Install"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_Install_OutputMessage">
+<wsdl:part name="parameters" element="tns:InstallResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_Disconnect_InputMessage">
+<wsdl:part name="parameters" element="tns:Disconnect"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_Disconnect_OutputMessage">
+<wsdl:part name="parameters" element="tns:DisconnectResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_UpdateFirmware_InputMessage">
+<wsdl:part name="parameters" element="tns:UpdateFirmware"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_UpdateFirmware_OutputMessage">
+<wsdl:part name="parameters" element="tns:UpdateFirmwareResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_SendMessage_InputMessage">
+<wsdl:part name="parameters" element="tns:SendMessage"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_SendMessage_OutputMessage">
+<wsdl:part name="parameters" element="tns:SendMessageResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_UpdatePin_InputMessage">
+<wsdl:part name="parameters" element="tns:UpdatePin"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_UpdatePin_OutputMessage">
+<wsdl:part name="parameters" element="tns:UpdatePinResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_ReSendKey_InputMessage">
+<wsdl:part name="parameters" element="tns:ReSendKey"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_ReSendKey_OutputMessage">
+<wsdl:part name="parameters" element="tns:ReSendKeyResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_RemovePacks_InputMessage">
+<wsdl:part name="parameters" element="tns:RemovePacks"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_RemovePacks_OutputMessage">
+<wsdl:part name="parameters" element="tns:RemovePacksResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_AddPacks_InputMessage">
+<wsdl:part name="parameters" element="tns:AddPacks"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_AddPacks_OutputMessage">
+<wsdl:part name="parameters" element="tns:AddPacksResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_Uninstall_InputMessage">
+<wsdl:part name="parameters" element="tns:Uninstall"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_Uninstall_OutputMessage">
+<wsdl:part name="parameters" element="tns:UninstallResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_Reconnect_InputMessage">
+<wsdl:part name="parameters" element="tns:Reconnect"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_Reconnect_OutputMessage">
+<wsdl:part name="parameters" element="tns:ReconnectResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_Status_InputMessage">
+<wsdl:part name="parameters" element="tns:Status"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_Status_OutputMessage">
+<wsdl:part name="parameters" element="tns:StatusResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_ReScanChannels_InputMessage">
+<wsdl:part name="parameters" element="tns:ReScanChannels"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_ReScanChannels_OutputMessage">
+<wsdl:part name="parameters" element="tns:ReScanChannelsResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_AddCarrier_InputMessage">
+<wsdl:part name="parameters" element="tns:AddCarrier"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_AddCarrier_OutputMessage">
+<wsdl:part name="parameters" element="tns:AddCarrierResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_ViewSetTopBoxID_InputMessage">
+<wsdl:part name="parameters" element="tns:ViewSetTopBoxID"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_ViewSetTopBoxID_OutputMessage">
+<wsdl:part name="parameters" element="tns:ViewSetTopBoxIDResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_ResetSetTopBox_InputMessage">
+<wsdl:part name="parameters" element="tns:ResetSetTopBox"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_ResetSetTopBox_OutputMessage">
+<wsdl:part name="parameters" element="tns:ResetSetTopBoxResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_UpdateCodeZone_InputMessage">
+<wsdl:part name="parameters" element="tns:UpdateCodeZone"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_UpdateCodeZone_OutputMessage">
+<wsdl:part name="parameters" element="tns:UpdateCodeZoneResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_RebootSetTopBox_InputMessage">
+<wsdl:part name="parameters" element="tns:RebootSetTopBox"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_RebootSetTopBox_OutputMessage">
+<wsdl:part name="parameters" element="tns:RebootSetTopBoxResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_ForceUpdateFirmware_InputMessage">
+<wsdl:part name="parameters" element="tns:ForceUpdateFirmware"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_ForceUpdateFirmware_OutputMessage">
+<wsdl:part name="parameters" element="tns:ForceUpdateFirmwareResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_UpdateControlParentall_InputMessage">
+<wsdl:part name="parameters" element="tns:UpdateControlParentall"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_UpdateControlParentall_OutputMessage">
+<wsdl:part name="parameters" element="tns:UpdateControlParentallResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_UpdateMenuPass_InputMessage">
+<wsdl:part name="parameters" element="tns:UpdateMenuPass"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_UpdateMenuPass_OutputMessage">
+<wsdl:part name="parameters" element="tns:UpdateMenuPassResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_GetSmartCardsInfo_InputMessage">
+<wsdl:part name="parameters" element="tns:GetSmartCardsInfo"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_GetSmartCardsInfo_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetSmartCardsInfoResponse"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_GetInformation_InputMessage">
+<wsdl:part name="parameters" element="tns:GetInformation"/>
+</wsdl:message>
+<wsdl:message name="ITvCableIntegrationService_GetInformation_OutputMessage">
+<wsdl:part name="parameters" element="tns:GetInformationResponse"/>
+</wsdl:message>
+<wsdl:portType name="ITvCableIntegrationService">
+<wsdl:operation name="Install">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/Install" message="tns:ITvCableIntegrationService_Install_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/InstallResponse" message="tns:ITvCableIntegrationService_Install_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="Disconnect">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/Disconnect" message="tns:ITvCableIntegrationService_Disconnect_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/DisconnectResponse" message="tns:ITvCableIntegrationService_Disconnect_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="UpdateFirmware">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/UpdateFirmware" message="tns:ITvCableIntegrationService_UpdateFirmware_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/UpdateFirmwareResponse" message="tns:ITvCableIntegrationService_UpdateFirmware_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="SendMessage">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/SendMessage" message="tns:ITvCableIntegrationService_SendMessage_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/SendMessageResponse" message="tns:ITvCableIntegrationService_SendMessage_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="UpdatePin">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/UpdatePin" message="tns:ITvCableIntegrationService_UpdatePin_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/UpdatePinResponse" message="tns:ITvCableIntegrationService_UpdatePin_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="ReSendKey">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/ReSendKey" message="tns:ITvCableIntegrationService_ReSendKey_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/ReSendKeyResponse" message="tns:ITvCableIntegrationService_ReSendKey_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="RemovePacks">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/RemovePacks" message="tns:ITvCableIntegrationService_RemovePacks_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/RemovePacksResponse" message="tns:ITvCableIntegrationService_RemovePacks_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="AddPacks">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/AddPacks" message="tns:ITvCableIntegrationService_AddPacks_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/AddPacksResponse" message="tns:ITvCableIntegrationService_AddPacks_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="Uninstall">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/Uninstall" message="tns:ITvCableIntegrationService_Uninstall_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/UninstallResponse" message="tns:ITvCableIntegrationService_Uninstall_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="Reconnect">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/Reconnect" message="tns:ITvCableIntegrationService_Reconnect_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/ReconnectResponse" message="tns:ITvCableIntegrationService_Reconnect_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="Status">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/Status" message="tns:ITvCableIntegrationService_Status_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/StatusResponse" message="tns:ITvCableIntegrationService_Status_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="ReScanChannels">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/ReScanChannels" message="tns:ITvCableIntegrationService_ReScanChannels_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/ReScanChannelsResponse" message="tns:ITvCableIntegrationService_ReScanChannels_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="AddCarrier">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/AddCarrier" message="tns:ITvCableIntegrationService_AddCarrier_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/AddCarrierResponse" message="tns:ITvCableIntegrationService_AddCarrier_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="ViewSetTopBoxID">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/ViewSetTopBoxID" message="tns:ITvCableIntegrationService_ViewSetTopBoxID_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/ViewSetTopBoxIDResponse" message="tns:ITvCableIntegrationService_ViewSetTopBoxID_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="ResetSetTopBox">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/ResetSetTopBox" message="tns:ITvCableIntegrationService_ResetSetTopBox_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/ResetSetTopBoxResponse" message="tns:ITvCableIntegrationService_ResetSetTopBox_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="UpdateCodeZone">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/UpdateCodeZone" message="tns:ITvCableIntegrationService_UpdateCodeZone_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/UpdateCodeZoneResponse" message="tns:ITvCableIntegrationService_UpdateCodeZone_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="RebootSetTopBox">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/RebootSetTopBox" message="tns:ITvCableIntegrationService_RebootSetTopBox_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/RebootSetTopBoxResponse" message="tns:ITvCableIntegrationService_RebootSetTopBox_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="ForceUpdateFirmware">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/ForceUpdateFirmware" message="tns:ITvCableIntegrationService_ForceUpdateFirmware_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/ForceUpdateFirmwareResponse" message="tns:ITvCableIntegrationService_ForceUpdateFirmware_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="UpdateControlParentall">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/UpdateControlParentall" message="tns:ITvCableIntegrationService_UpdateControlParentall_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/UpdateControlParentallResponse" message="tns:ITvCableIntegrationService_UpdateControlParentall_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="UpdateMenuPass">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/UpdateMenuPass" message="tns:ITvCableIntegrationService_UpdateMenuPass_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/UpdateMenuPassResponse" message="tns:ITvCableIntegrationService_UpdateMenuPass_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetSmartCardsInfo">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/GetSmartCardsInfo" message="tns:ITvCableIntegrationService_GetSmartCardsInfo_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/GetSmartCardsInfoResponse" message="tns:ITvCableIntegrationService_GetSmartCardsInfo_OutputMessage"/>
+</wsdl:operation>
+<wsdl:operation name="GetInformation">
+<wsdl:input wsaw:Action="http://tempuri.org/ITvCableIntegrationService/GetInformation" message="tns:ITvCableIntegrationService_GetInformation_InputMessage"/>
+<wsdl:output wsaw:Action="http://tempuri.org/ITvCableIntegrationService/GetInformationResponse" message="tns:ITvCableIntegrationService_GetInformation_OutputMessage"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="BasicHttpBinding_ITvCableIntegrationService" type="tns:ITvCableIntegrationService">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="Install">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/Install" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Disconnect">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/Disconnect" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="UpdateFirmware">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/UpdateFirmware" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="SendMessage">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/SendMessage" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="UpdatePin">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/UpdatePin" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ReSendKey">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/ReSendKey" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="RemovePacks">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/RemovePacks" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="AddPacks">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/AddPacks" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Uninstall">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/Uninstall" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Reconnect">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/Reconnect" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Status">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/Status" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ReScanChannels">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/ReScanChannels" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="AddCarrier">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/AddCarrier" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ViewSetTopBoxID">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/ViewSetTopBoxID" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ResetSetTopBox">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/ResetSetTopBox" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="UpdateCodeZone">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/UpdateCodeZone" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="RebootSetTopBox">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/RebootSetTopBox" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="ForceUpdateFirmware">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/ForceUpdateFirmware" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="UpdateControlParentall">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/UpdateControlParentall" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="UpdateMenuPass">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/UpdateMenuPass" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetSmartCardsInfo">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/GetSmartCardsInfo" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="GetInformation">
+<soap:operation soapAction="http://tempuri.org/ITvCableIntegrationService/GetInformation" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="TvCableIntegrationService">
+<wsdl:port name="BasicHttpBinding_ITvCableIntegrationService" binding="tns:BasicHttpBinding_ITvCableIntegrationService">
+<soap:address location="http://ns.bayteq.com:8090/TvCableIntegrationService.svc"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tvp="http://www.grupotvcable.com.ec/WsdlTvPagada/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WsdlTvPagada" targetNamespace="http://www.grupotvcable.com.ec/WsdlTvPagada/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.grupotvcable.com.ec/WsdlTvPagada/" elementFormDefault="qualified">
+      <xsd:element name="AprovTvPagada">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ejecutaComando" type="tvp:Comando"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AprovTvPagadaResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="consultaRespuesta" type="tvp:Respuesta"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="Cabecera">
+      	<xsd:sequence>
+      		<xsd:element name="IDEmpresa" type="xsd:int">
+
+                        <xsd:annotation>
+                        	<xsd:documentation>
+                        		Código de la ciudad del negocio.
+                        	</xsd:documentation>
+                        </xsd:annotation>
+
+      		</xsd:element>
+      		<xsd:element name="Negocio" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Se especifica el negocio, para el proceso de
+      					aprovisionamiento el negocio no es lo mismo
+      					que las empresas definidas por Comarch para el
+      					Grupo TvCable.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="Interface" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Interfaces o Comandos que se ejecutara o
+      					acción en los controladores.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="Secuencia" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Número Secuencial para tener un control de los
+      					comandos enviados.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Comando">
+      	<xsd:sequence>
+      		<xsd:element name="Cabecera" type="tvp:Cabecera"></xsd:element>
+      		<xsd:element name="Detalle" type="tvp:Detalle"></xsd:element>
+
+
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Mensaje">
+      	<xsd:sequence>
+      		<xsd:element name="CodError" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Código del Error que dio el controlador al
+      					procesar el comando.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+                    <xsd:element name="DetMensaje" type="xsd:string">
+                    	<xsd:annotation>
+                    		<xsd:documentation>
+                    			Descripción del Error que se presento al
+                    			procesar el comando.
+                    		</xsd:documentation>
+                    	</xsd:annotation></xsd:element>
+                    <xsd:element name="DatosExtrasTVP"
+      			type="tvp:DatosExtrasTVP">
+                        <xsd:annotation>
+                        	<xsd:documentation>
+                        		específicamente para comandos de
+                        		TVPagada.
+                        	</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="DatosExtrasTVP">
+      	<xsd:sequence>
+      		<xsd:element name="IdServ" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Código del Servicio que tiene el decodificador
+      					en su memoria.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="NumPaq" type="tvp:NumPaq" ></xsd:element>
+      		<xsd:element name="NumEve" type="tvp:NumEve" ></xsd:element>
+      		<xsd:element name="Credito" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el valor que tiene la caja en cupos para la
+      					compra por impulso.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="TipoDeco" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el código del tipo de evento que tiene
+      					configurado el decodificador.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="CodMap" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Código del Channel Map que tiene guardado o
+      					configurado el decodificador.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="Activo" type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Si esta Activo o No el Decodificador.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="UnitAddres" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Código secundario del Decodificador
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="Plant" type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Variable que permite detectar si el
+      					decodificador esta conectado a la red.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="NumPaq">
+      	<xsd:sequence>
+      		<xsd:element name="IdPay" type="tvp:IdPay" minOccurs="0" maxOccurs="unbounded">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Código del Paquete que tiene el decodificador.
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+      	</xsd:sequence>
+      	<xsd:attribute name="CantP" type="xsd:int"></xsd:attribute>
+      </xsd:complexType>
+    
+      <xsd:complexType name="NumEve">
+      	<xsd:sequence>
+      		<xsd:element name="IdEve" type="tvp:IdEve" minOccurs="0" maxOccurs="unbounded">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Variable IdEve, define el número de veces que
+      					se repite el Tag IdEve dependiendo del número
+      					de Eventos que tiene el decodificador en su
+      					memoria.
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+      	</xsd:sequence>
+      	<xsd:attribute name="CantE" type="xsd:int" use="optional"></xsd:attribute>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Detalle">
+      	<xsd:sequence>
+      		<xsd:element name="TVpagada" type="tvp:TVpagada"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="TVpagada">
+      	<xsd:sequence>
+      		<xsd:element name="Serie" type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el numero de identificación de la caja
+      					decodificadora.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="TipoD" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el código del modelo de la caja
+      					decodificadora.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="IdConvertidor" type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es un código interno de las Cajas
+      					decodificadoras análogas y cajas de Aire.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="IdAccount" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el código de cuenta en el cual se va a
+      					encontrar instalado el Decodificador.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="CItem" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el código interno del producto. Dependerá
+      					de las Tablas en Comarch
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="Ubicacion" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el lugar donde se encuentra el decodificar
+
+      					Código Descripción 20 Instalado 23 No
+      					Instalado
+
+      					Esto sirve para determinar si el deco esta on
+      					plant u off plant, para que el DAC no
+      					recolecte aquellos decodificadores que están
+      					desconectados de la red.
+
+      					Estos Valores son los que actualmente se tiene
+      					configurado en el Sistema de Clientes, estos
+      					valores cambiaran dependiendo de lo que se
+      					configure en Comarch.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="Accion" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					El proceso que se realizara la caja al recibir
+      					el comando.
+
+      					Código Descripción 1 Cold Init 2 Desactivación
+      					3 Activación 4 PIN
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="Credito" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el valor de cupo que tiene el cliente en
+      					ese equipo. (Verificar). API
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="IdServicio" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el código del Tipo Plan que tiene
+      					contratado el Cliente. Dependerá de las Tablas
+      					en Comarch
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="IdPaquetes" type="tvp:IdPaquetes">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Variable CantP, indicara la cantidad de
+      					parámetros IdPaquete serán enviados en el XML.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="IdEventos" type="tvp:IdEventos">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Variable CantE, Indicara la cantidad de
+      					parámetros IDEvento serán enviados en el XML.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="TipoA" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Campo que determinara que tipo de activación
+      					se realizara.
+
+      					Código Descripción 1 Servicios 2 Pay Channel 3
+      					Todos
+
+   				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="EstadoC" type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Si esta Activo o moroso, esto sirve para
+      					controlar los IPPV y la bandera On plant para
+      					el negocio de TvPagada.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="FormaPago" type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es la forma de pago que el clientes tiene
+      					configurado en su cuenta.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="TipoC" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el tipo de consulta que se va a ejecutar.
+
+      					Código Descripción 1 Servicios 2 Recolección 3
+      					Caracteristicas (Creditos) 4 Pay Channel 5
+      					Eventos 6 TODOS
+
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="CodigoCanal" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el código interno del canal al cual se
+      					programa un evento, este parámetro se envía
+      					cuando se va a crear, modificar o eliminar un
+      					evento.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="DescEvento" type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es la descripción del Evento que se va a
+      					crear, este parámetro se envía cuando se va a
+      					crear o modificar un evento.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="Comienzo" type="tvp:Comienzo"></xsd:element>
+      		<xsd:element name="Final" type="tvp:Final"></xsd:element>
+      		<xsd:element name="DuracionEvento" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es la duración del Evento, este parámetro se
+      					lo envía cuando se va a crear o modificar un
+      					evento. Segundos
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="Interstitial" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el tiempo que se da entre cada evento, este
+      					parámetro se lo envía cuando se va a crear o
+      					modificar un evento. Segundos
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="TiempoLibre" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el tiempo en que se deja la señal abierta
+      					para que el usuario pueda ver el inicio de la
+      					película, este parámetro se lo envía cuando se
+      					va a crear o modificar un evento. Segundos
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="Mpaa" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el tipo de Evento que se esta programando,
+      					este parámetro se lo envía cuando se va a
+      					crear o modificar un evento.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="ContenidoViolento" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el código del tipo de contenido violento
+      					del evento que se esta programando, este
+      					parámetro se lo envía cuando se va a crear o
+      					modificar un evento.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="ContenidoSexual" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el código del tipo de contenido sexual del
+      					evento que se esta programando, este parámetro
+      					se lo envía cuando se va a crear o modificar
+      					un evento.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="Lenguaje" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el código del tipo de contenido de Lenguaje
+      					del evento que se esta programando, este
+      					parámetro se lo envía cuando se va a crear o
+      					modificar un evento.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="Rating" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el Rating del Evento, este parámetro se lo
+      					envía cuando se va a crear o modificar un
+      					evento.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="TiempoCompra" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Periodo de tiempo que se permite la compra por
+      					impulso, este parámetro se lo envía cuando se
+      					va a crear o modificar un evento.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="Paquete" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el número de paquetes que contiene el
+      					evento, este parámetro se lo envía cuando se
+      					va a crear o modificar un evento.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="TiempoDisplay" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el periodo de tiempo en el cual se presenta
+      					el nombre del evento, este parámetro se lo
+      					envía cuando se va a crear o modificar un
+      					evento.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="CostoEvento" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el costo del evento por cupos, este
+      					parámetro se lo envía cuando se va a crear o
+      					modificar un evento.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="PrecioEvento" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el precio del evento en valor monetario,
+      					este parámetro se lo envía cuando se va a
+      					crear o modificar un evento.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="AnyTime" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el tiempo libre entre evento, este
+      					parámetro se lo envía cuando se va a crear o
+      					modificar un evento. Puede de que no sean
+      					necesario, dependiendo de lo que se decida.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="TipoPromocion" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el código de la promoción que esta vigente
+      					en la cuenta del cliente.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="DatoC1" type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Dato 1 Libre para Comandos de DAC6000
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="DatoC2" type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Dato 2 Libre para Comandos de DAC6000
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="IdPaquetes">
+      	<xsd:sequence>
+      		<xsd:element name="IdPaquete" type="tvp:IdPaquete" minOccurs="0" maxOccurs="unbounded">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el código o los códigos de los Pay channel
+      					(Productos) que tiene contratado el Cliente.
+      					Este parámetro se repetirá las veces que la
+      					variable CantP declara en el parámetro
+      					IDpaquetes allá sido definida. Dependerá de
+      					las Tablas en Comarch
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      	</xsd:sequence>
+      	<xsd:attribute name="CantP" type="xsd:int"></xsd:attribute>
+      </xsd:complexType>
+    
+      <xsd:complexType name="IdEventos">
+      	<xsd:sequence>
+      		<xsd:element name="IdEvento" type="tvp:IdEvento" minOccurs="0" maxOccurs="unbounded">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el código o los códigos de Evento, ya sea
+      					que lo tenga adquirido un cliente, o cuando se
+      					crea, modifica o elimina el mismo. Este
+      					parámetro se repetirá las veces que la
+      					variable CantE haya sido declara en el
+      					parámetro IdEventos. (Verificar) Dicen que
+      					debe ser comando por comando, ya que
+      					Insigthnet no puede activar todo de una.
+      					Dependerá de las Tablas en Comarch
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      	</xsd:sequence>
+      	<xsd:attribute name="CantE" type="xsd:int"></xsd:attribute>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Comienzo">
+      	<xsd:sequence>
+      		<xsd:element name="FechaIni" type="xsd:date">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es la fecha de inicio de un Evento, este
+      					parámetro se envía cuando se crear, modificar
+      					o eliminar un evento. YYYY/MM/DD
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="TiempoIni" type="xsd:dateTime">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el tiempo de inicio de un Evento, este
+      					parámetro se lo envía cuando se va a crear,
+      					modificar o eliminar un evento. HH:MM
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Final">
+      	<xsd:sequence>
+      		<xsd:element name="FechaFin" type="xsd:date">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es la fecha de fin de un Evento, este
+      					parámetro se envía cuando se crear, modificar
+      					o eliminar un evento.YYYY/MM/DD
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="TiempoFin" type="xsd:dateTime">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el tiempo de finalización de un Evento,
+      					este parámetro se lo envía cuando se va a
+      					crear, modificar o eliminar un evento. HH:MM
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+    
+      <xsd:complexType name="Respuesta">
+      	<xsd:sequence>
+      		<xsd:element name="Cabecera" type="tvp:Cabecera"></xsd:element>
+      		<xsd:element name="Mensaje" type="tvp:Mensaje"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="IdPay">
+      	<xsd:sequence>
+      		<xsd:element name="IdPay" type="xsd:int"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+      
+    
+      <xsd:complexType name="IdEve">
+      	<xsd:sequence>
+      		<xsd:element name="IdEve" type="xsd:int"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="IdPaquete">
+      	<xsd:sequence>
+      		<xsd:element name="IdPaquete" type="xsd:int"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="IdEvento">
+      	<xsd:sequence>
+      		<xsd:element name="IdEvento" type="xsd:int"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="AprovTvPagadaRequest">
+    <wsdl:part element="tvp:AprovTvPagada" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="AprovTvPagadaResponse">
+    <wsdl:part element="tvp:AprovTvPagadaResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="WsdlTvPagada">
+    <wsdl:operation name="AprovTvPagada">
+      <wsdl:input message="tvp:AprovTvPagadaRequest"/>
+      <wsdl:output message="tvp:AprovTvPagadaResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WsdlTvPagadaSOAP" type="tvp:WsdlTvPagada">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AprovTvPagada">
+      <soap:operation soapAction="http://www.grupotvcable.com.ec/WsdlTvPagada/AprovTvPagada"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsdlTvPagada">
+    <wsdl:port binding="tvp:WsdlTvPagadaSOAP" name="WsdlTvPagadaSOAP">
+      <soap:address location="http://192.168.0.108/WsAprovisionamiento/services/WsdlTvPagada"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

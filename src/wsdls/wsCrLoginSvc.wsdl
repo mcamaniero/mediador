@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://partners.compuredes.com.co/mcafee" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="https://partners.compuredes.com.co/mcafee" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://partners.compuredes.com.co/mcafee">
+      <s:element name="wmCreateSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tipoLogin" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wmCreateSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wmCreateSessionResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="clsHeader" type="tns:clsHeader"/>
+      <s:complexType name="clsHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SubPartnerID" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="SubPartnerPass" type="s:string"/>
+        </s:sequence>
+        <s:anyAttribute/>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="wmCreateSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:wmCreateSession"/>
+  </wsdl:message>
+  <wsdl:message name="wmCreateSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:wmCreateSessionResponse"/>
+  </wsdl:message>
+  <wsdl:message name="wmCreateSessionclsHeader">
+    <wsdl:part name="clsHeader" element="tns:clsHeader"/>
+  </wsdl:message>
+  <wsdl:portType name="wsCrLoginSvcSoap">
+    <wsdl:operation name="wmCreateSession">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Metodo para el login, tipo 1 = CONSUMER, tipo 2 = TOP</wsdl:documentation>
+      <wsdl:input message="tns:wmCreateSessionSoapIn"/>
+      <wsdl:output message="tns:wmCreateSessionSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsCrLoginSvcSoap" type="tns:wsCrLoginSvcSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="wmCreateSession">
+      <soap:operation soapAction="https://partners.compuredes.com.co/mcafee/wmCreateSession" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:wmCreateSessionclsHeader" part="clsHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+        <soap:header message="tns:wmCreateSessionclsHeader" part="clsHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsCrLoginSvcSoap12" type="tns:wsCrLoginSvcSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="wmCreateSession">
+      <soap12:operation soapAction="https://partners.compuredes.com.co/mcafee/wmCreateSession" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+        <soap12:header message="tns:wmCreateSessionclsHeader" part="clsHeader" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+        <soap12:header message="tns:wmCreateSessionclsHeader" part="clsHeader" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsCrLoginSvc">
+    <wsdl:port name="wsCrLoginSvcSoap" binding="tns:wsCrLoginSvcSoap">
+      <soap:address location="http://testmc.compuredes.com.co/mcafee/wsCrLoginSvc.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="wsCrLoginSvcSoap12" binding="tns:wsCrLoginSvcSoap12">
+      <soap12:address location="http://testmc.compuredes.com.co/mcafee/wsCrLoginSvc.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:inw="http://www.grupotvcable.com.ec/WsdlIntraway2/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WsdlIntraway" targetNamespace="http://www.grupotvcable.com.ec/WsdlIntraway2/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.grupotvcable.com.ec/WsdlIntraway2/" elementFormDefault="qualified">
+      <xsd:element name="AprovIntraway">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ejecutaComando" type="inw:Comando"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AprovIntrawayResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="consultaRespuesta" type="inw:Respuesta"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:complexType name="Respuesta">
+      	<xsd:sequence>
+      		<xsd:element name="Cabecera" type="inw:Cabecera"></xsd:element>
+
+      		<xsd:element name="Mensaje" type="inw:Mensaje"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+            <xsd:complexType name="Cabecera">
+      	<xsd:sequence>
+      		<xsd:element name="IDEmpresa" type="xsd:string">
+
+                        <xsd:annotation>
+                        	<xsd:documentation>
+                        		Código de la ciudad del negocio.
+                        	</xsd:documentation>
+                        </xsd:annotation>
+
+      		</xsd:element>
+      		<xsd:element name="Negocio" type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Se especifica el negocio, para el proceso de
+      					aprovisionamiento el negocio no es lo mismo
+      					que las empresas definidas por Comarch para el
+      					Grupo TvCable.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="Interface" type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Interfaces o Comandos que se ejecutara o
+      					acción en los controladores.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="Secuencia" type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Número Secuencial para tener un control de los
+      					comandos enviados.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+ 
+            <xsd:complexType name="Detalle">
+            	<xsd:sequence>
+            		<xsd:element name="Intraway" type="inw:Intraway"></xsd:element>
+            	</xsd:sequence>
+            </xsd:complexType>
+            
+            <xsd:complexType name="Mensaje">
+            	<xsd:sequence>
+            		<xsd:element name="CodError" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Código del Error que dio el controlador
+            					al procesar el comando.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="DetMensaje" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Descripción del Error que se presento al
+            					procesar el comando.
+            				</xsd:documentation>
+            			</xsd:annotation></xsd:element>
+            	</xsd:sequence>
+            </xsd:complexType>
+            
+            <xsd:complexType name="Intraway">
+            	<xsd:sequence>
+            		<xsd:element name="Estandar" type="inw:Estandar"></xsd:element>
+            		<xsd:element name="Interfaz" type="inw:Interfaz"></xsd:element>
+            	</xsd:sequence>
+            </xsd:complexType>
+    
+            <xsd:complexType name="Estandar">
+            	<xsd:sequence>
+            		<xsd:element name="AuthKey" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Es el campo que identifica al sistema
+            					que envía el requerimiento, el valor
+            					actual que se envía es:
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="ClienteCRM" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Identificador Numérico del cliente en el
+            					sistema de gestión.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="IdProducto" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Es el campo clave que utiliza el sistema
+            					de gestión y ventas para identificar un
+            					producto particular de un cliente.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="IdProductoPadre"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Usado cuando el producto vendido depende
+            					de otro que hace de producto principal.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+                    <xsd:element name="IdServicio" type="xsd:string"></xsd:element>
+                    <xsd:element name="IdServicioPadre"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Usado cuando el servicio vendido depende
+            					de otro que hace de servicio principal
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="IdVenta" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Este campo permite a Intraway y a las
+            					aplicaciones periféricas vender nuevos
+            					productos a clientes
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="IdVentaPadre" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Usado cuando el servicio es vendido
+            					desde otra aplicación distinta al
+            					sistema de gestión y ventas.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="IdPromotor" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Es un campo informativo que puede
+            					indicar entre otros datos, que usuario o
+            					que aplicación generó que se realice la
+            					solicitud o a través de que canal se
+            					condujo la venta
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="FechaDiferida" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Indica la fecha de activación de un
+            					producto MM/DD/YYYY
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="IdEstado" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Específica la acción que debe realizar
+            					la interfase o comando solicitado.
+
+            					Código Descripción 0 Eliminación 1
+            					Activación 2 Modificación 4 Suspensión
+
+
+
+
+
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+
+            	</xsd:sequence>
+            </xsd:complexType>
+            
+            <xsd:complexType name="Interfaz">
+            	<xsd:sequence>
+            		<xsd:element name="Nombre" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Nombre del Cliente
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="Username" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Nombre del usuario de correo electrónico
+            					antes del @.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="Password" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Clave del usuario de correo.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="IdTipoCliente"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Identificador del Cliente. En el caso de
+            					Internet es Juridico o Natural
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="EmailNoticias"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Casilla de Correo donde el cliente
+            					recibirá noticias.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="idCicloFactCRM"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Identificador en el CRM del ciclo de
+            					facturación de los clientes.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="ServicTypeCRMId"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Muestra el consumo al cliente.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="MessageCRMID"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Identificador común que indica el
+            					mensaje a enviar.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="Cantidad" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Cantidad de cuentas de correo que puede
+            					crear el cliente.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="Quotamax" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Espacio Máximo que puede distribuirse
+            					entre las cuentas.(Parámetro Fijo)
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="ServidorEmailCRMId"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Identificador en el CRM del servidor de
+            					email.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="Dominio" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Dominio de la cuenta de correo después
+            					del @.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="DiskQuota" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Espacio máximo en disco.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="Noticias" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					El cliente acepta o no, noticias en esta
+            					cuenta.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="Name" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Nombre a mostrar
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="ServicePackageCRMId"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Identificador Común que indica el
+            					Servicie Package.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="Hub" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Identificador común de Hub donde esta
+            					ubicado el cliente.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="Nodo" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Código del nodo donde esta ubicado el
+            					cliente.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="IdISPCRM" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Identificar del Grupo de Scopers de CPE.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="ActivactionCode"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Código de activación para provisioning
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="IspMtaCrmId" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					1definicion: Identificador del Grupo de
+            					Scopes de MTA. 2definicion:Indica el
+            					SoftSwitch donde activar el MTA.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="BuscarTagCRM" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Identificador del Grupo de Scopes de CM
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="Docsis" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Versión del CableModem a Instalar.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="EnableAccounting"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Activación o desactivación del control
+            					de consumo de tráfico.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="ProductName" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Nombre del Producto.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="BandPackageCRMId"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Identificador Común que indica el band
+            					Package.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="PrepaidPolicyCRMId"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Activación o Desactivación del Control
+            					de pago.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="CantCPE" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Cantidad de PCs.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="USChannelID" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Identificador del canal de Upstream.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="StartingBalance"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Crédito Inicial.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="DSFreq" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Frecuencia de Downstream.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="PeriodicalBaseBalance"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Crédito inicial para cada periodo de
+            					facturación.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="NoBoot" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Flag para indicar si se debe reiniciar
+            					el dispositivo luego de un cambio de
+            					configuración.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="MACAddress" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Identificador único del dispositivo.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="SnmpGroupCRMID"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Identificador del CRM del filtro. Valor
+            					predeterminado &lt;BLOQ_IP_ALL_CPE&gt;
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="HostName" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Hostname del dispositivo.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+
+                    <xsd:element name="CmsCMDID" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Identificador del CRM del filtro.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="Provisioning" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Indica si fue creado por Intraway o por
+            					otro sistema (0).
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="ProfileCRMId"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Indica el Perfil del MTA, que será
+            					instalado.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="SendtoController"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Flag para indicar si Intraway debe
+            					interactuar con el Sotfswitch (sip
+            					Server). SI
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="LinesQTy" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Indica la cantidad de líneas que soporta
+            					el MTA.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="MtaModelCRMId"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Indica el modelo del MTA.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="EndpointNumber" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					El numero de EP dentro del MTA.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="Tn" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					El numero de teléfono dentro asociado al
+            					EndPoint
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="HomeExchangeCRMId"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Indica el HomeExchange en el Softswitch
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="FeatureCrmId"
+            			type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Paquete de servicios configurado en el
+            					Intraway.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="Active" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					SI o No.
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="DatoI1" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Dato 1 Libre para Comandos de Intraway
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="DatoI2" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Dato 2 Libre para Comandos de Intraway
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="Customer1" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Datos adicionales a incluir en el
+            					Mensaje
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="Customer2" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Datos adicionales a incluir en el
+            					Mensaje
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="Customer3" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Datos adicionales a incluir en el
+            					Mensaje
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+            		<xsd:element name="Customer4" type="xsd:string">
+            			<xsd:annotation>
+            				<xsd:documentation>
+            					Datos adicionales a incluir en el
+            					Mensaje
+            				</xsd:documentation>
+            			</xsd:annotation>
+            		</xsd:element>
+
+            	</xsd:sequence>
+            </xsd:complexType>
+    
+            <xsd:complexType name="Comando">
+            	<xsd:sequence>
+            		<xsd:element name="Cabecera" type="inw:Cabecera"></xsd:element>
+            		<xsd:element name="Detalle" type="inw:Detalle"></xsd:element>
+            	</xsd:sequence>
+            </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="AprovIntrawayRequest">
+    <wsdl:part element="inw:AprovIntraway" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="AprovIntrawayResponse">
+    <wsdl:part element="inw:AprovIntrawayResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="WsdlIntraway">
+    <wsdl:operation name="AprovIntraway">
+      <wsdl:input message="inw:AprovIntrawayRequest"/>
+      <wsdl:output message="inw:AprovIntrawayResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WsdlIntrawaySOAP" type="inw:WsdlIntraway">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AprovIntraway">
+      <soap:operation soapAction="http://www.grupotvcable.com.ec/WsdlIntraway/AprovIntraway"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsdlIntraway">
+    <wsdl:port binding="inw:WsdlIntrawaySOAP" name="WsdlIntrawaySOAP">
+      <soap:address location="http://192.168.0.114/WsAprovisionamiento/services/WsdlIntraway"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

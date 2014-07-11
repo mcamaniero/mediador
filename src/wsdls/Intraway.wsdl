@@ -1,0 +1,1484 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<definitions targetNamespace="urn:IntrawayWSDL" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="urn:IntrawayWSDL" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+	<types>
+		<xsd:schema targetNamespace="urn:IntrawayWSDL">
+			<xsd:import
+				namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+			<xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+			<xsd:complexType name="InterfaceObjInput">
+				<xsd:sequence>
+					<xsd:element name="idEntradaCaller"	type="xsd:string" />
+					<xsd:element name="idInterface" type="xsd:string" />
+					<xsd:element name="idEstado" type="xsd:string" />
+					<xsd:element name="asyncronic" type="xsd:string" />
+					<xsd:element name="fechaDiferido" type="xsd:string" />
+					<xsd:element name="idCliente" type="xsd:string" />
+					<xsd:element name="idEmpresa" type="xsd:string" />
+					<xsd:element name="idVenta" type="xsd:string" />
+					<xsd:element name="idVentaPadre" type="xsd:string" />
+					<xsd:element name="idServicio" type="xsd:string" />
+					<xsd:element name="idProducto" type="xsd:string" />
+					<xsd:element name="idServicioPadre"	type="xsd:string" />
+					<xsd:element name="idProductoPadre"	type="xsd:string" />
+					<xsd:element name="idPromotor" type="xsd:string" />
+					<xsd:element name="xmlEncoding" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="InterfaceObjOutput">
+				<xsd:sequence>
+					<xsd:element name="idEntradaCaller"
+						type="xsd:string" />
+					<xsd:element name="idError" type="xsd:string" />
+					<xsd:element name="errorStr" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="InternalObjOutput">
+				<xsd:sequence>
+					<xsd:element name="idError" type="xsd:string" />
+					<xsd:element name="errorStr" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="createTempMTAInput">
+				<xsd:sequence>
+					<xsd:element name="sysDescr" type="xsd:string" />
+					<xsd:element name="macaddress" type="xsd:string" />
+					<xsd:element name="linesQty" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="createTempSIPDeviceInput">
+				<xsd:sequence>
+					<xsd:element name="macaddress" type="xsd:string" />
+					<xsd:element name="linesQty" type="xsd:string" />
+					<xsd:element name="deviceTypeCrmId"
+						type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ReportObjInput">
+				<xsd:sequence>
+					<xsd:element name="showDocsis" type="xsd:string" />
+					<xsd:element name="showPacketCable"
+						type="xsd:string" />
+					<xsd:element name="showSIP" type="xsd:string" />
+					<xsd:element name="showCom21" type="xsd:string" />
+					<xsd:element name="showDialUp" type="xsd:string" />
+					<xsd:element name="showEmail" type="xsd:string" />
+					<xsd:element name="showHosting" type="xsd:string" />
+					<xsd:element name="showTelevision"
+						type="xsd:string" />
+					<xsd:element name="showVoiceMail" type="xsd:string" />
+					<xsd:element name="showVoipLine" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ReportObjOutput">
+				<xsd:sequence>
+					<xsd:element name="idEmpresaCRM" type="xsd:string" />
+					<xsd:element name="idClienteCRM" type="xsd:string" />
+					<xsd:element name="idTipoCliente" type="xsd:string" />
+					<xsd:element name="Empresa" type="xsd:string" />
+					<xsd:element name="TipoCliente" type="xsd:string" />
+					<xsd:element name="Nombre" type="xsd:string" />
+					<xsd:element name="Username" type="xsd:string" />
+					<xsd:element name="Password" type="xsd:string" />
+					<xsd:element name="FechaAlta" type="xsd:string" />
+					<xsd:element name="EmailNoticias" type="xsd:string" />
+					<xsd:element name="CicloFacturacion"
+						type="xsd:string" />
+					<xsd:element name="Docsis"
+						type="tns:ArrayOfDocsisReport" />
+					<xsd:element name="PacketCable"
+						type="tns:ArrayOfPacketCableReport" />
+					<xsd:element name="SIP" type="tns:ArrayOfSIPReport" />
+					<xsd:element name="Com21"
+						type="tns:NotImplementedYet" />
+					<xsd:element name="DialUp"
+						type="tns:NotImplementedYet" />
+					<xsd:element name="Email"
+						type="tns:NotImplementedYet" />
+					<xsd:element name="Hosting"
+						type="tns:NotImplementedYet" />
+					<xsd:element name="Television" type="tns:TVReport" />
+					<xsd:element name="VoiceMail"
+						type="tns:ArrayOfVoiceMailReport" />
+					<xsd:element name="VOIP"
+						type="tns:ArrayOfVOIPReport" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfReportObjOutput">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:ReportObjOutput[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="NotImplementedYet">
+				<xsd:sequence>
+					<xsd:element name="dummy" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="DocsisReport">
+				<xsd:sequence>
+					<xsd:element name="idServicio" type="xsd:string" />
+					<xsd:element name="idProducto" type="xsd:string" />
+					<xsd:element name="idVenta" type="xsd:string" />
+					<xsd:element name="idServicioPadre"
+						type="xsd:string" />
+					<xsd:element name="idProductoPadre"
+						type="xsd:string" />
+					<xsd:element name="idVentaPadre" type="xsd:string" />
+					<xsd:element name="Hub" type="xsd:string" />
+					<xsd:element name="Nodo" type="xsd:string" />
+					<xsd:element name="Macaddress" type="xsd:string" />
+					<xsd:element name="DocsisVersion" type="xsd:string" />
+					<xsd:element name="CantCPE" type="xsd:string" />
+					<xsd:element name="ServicePackage"
+						type="xsd:string" />
+					<xsd:element name="FechaAlta" type="xsd:string" />
+					<xsd:element name="Mensajes" type="xsd:string" />
+					<xsd:element name="Activo" type="xsd:string" />
+					<xsd:element name="ispCM" type="xsd:string" />
+					<xsd:element name="ispCPE" type="xsd:string" />
+					<xsd:element name="BandPackage" type="xsd:string" />
+					<xsd:element name="ActivationCode"
+						type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="PacketCableReport">
+				<xsd:sequence>
+					<xsd:element name="idServicio" type="xsd:string" />
+					<xsd:element name="idProducto" type="xsd:string" />
+					<xsd:element name="idVenta" type="xsd:string" />
+					<xsd:element name="idServicioPadre"
+						type="xsd:string" />
+					<xsd:element name="idProductoPadre"
+						type="xsd:string" />
+					<xsd:element name="idVentaPadre" type="xsd:string" />
+					<xsd:element name="Macaddress" type="xsd:string" />
+					<xsd:element name="LinesQty" type="xsd:string" />
+					<xsd:element name="FechaAlta" type="xsd:string" />
+					<xsd:element name="Activo" type="xsd:string" />
+					<xsd:element name="ispMTA" type="xsd:string" />
+					<xsd:element name="mtaProfile" type="xsd:string" />
+					<xsd:element name="mtaModel" type="xsd:string" />
+					<xsd:element name="ActivationCode"
+						type="xsd:string" />
+					<xsd:element name="endPoints"
+						type="tns:ArrayOfPacketCableEndPointsReport" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="VoiceMailReport">
+				<xsd:sequence>
+					<xsd:element name="idServicio" type="xsd:string" />
+					<xsd:element name="idProducto" type="xsd:string" />
+					<xsd:element name="idVenta" type="xsd:string" />
+					<xsd:element name="idServicioPadre"
+						type="xsd:string" />
+					<xsd:element name="idProductoPadre"
+						type="xsd:string" />
+					<xsd:element name="idVentaPadre" type="xsd:string" />
+					<xsd:element name="vmServer" type="xsd:string" />
+					<xsd:element name="vmServerCRMId" type="xsd:string" />
+					<xsd:element name="vmProfile" type="xsd:string" />
+					<xsd:element name="vmProfileCRMId"
+						type="xsd:string" />
+					<xsd:element name="vmUsername" type="xsd:string" />
+					<xsd:element name="vmDomainName" type="xsd:string" />
+					<xsd:element name="vmPassword" type="xsd:string" />
+					<xsd:element name="vmTUIPassword" type="xsd:string" />
+					<xsd:element name="vmSecTN1" type="xsd:string" />
+					<xsd:element name="vmSecTN2" type="xsd:string" />
+					<xsd:element name="vmSecTN3" type="xsd:string" />
+					<xsd:element name="vmSecTN4" type="xsd:string" />
+					<xsd:element name="vmSecTN5" type="xsd:string" />
+					<xsd:element name="vmSecTN6" type="xsd:string" />
+					<xsd:element name="vmSecTN7" type="xsd:string" />
+					<xsd:element name="vmSecTN8" type="xsd:string" />
+					<xsd:element name="vmSecTN10" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SIPReport">
+				<xsd:sequence>
+					<xsd:element name="idServicio" type="xsd:string" />
+					<xsd:element name="idProducto" type="xsd:string" />
+					<xsd:element name="idVenta" type="xsd:string" />
+					<xsd:element name="idServicioPadre"
+						type="xsd:string" />
+					<xsd:element name="idProductoPadre"
+						type="xsd:string" />
+					<xsd:element name="idVentaPadre" type="xsd:string" />
+					<xsd:element name="Macaddress" type="xsd:string" />
+					<xsd:element name="FechaAlta" type="xsd:string" />
+					<xsd:element name="sipProfile" type="xsd:string" />
+					<xsd:element name="sipModel" type="xsd:string" />
+					<xsd:element name="Activo" type="xsd:string" />
+					<xsd:element name="ActivationCode"
+						type="xsd:string" />
+					<xsd:element name="endPoints"
+						type="tns:ArrayOfSIPEndPointsReport" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="VOIPReport">
+				<xsd:sequence>
+					<xsd:element name="idProducto" type="xsd:string" />
+					<xsd:element name="idVenta" type="xsd:string" />
+					<xsd:element name="FechaAlta" type="xsd:string" />
+					<xsd:element name="FechaModif" type="xsd:string" />
+					<xsd:element name="FechaActivacion"
+						type="xsd:string" FechaActivacion="idServicio" />
+					<xsd:element name="Activo" type="xsd:string"
+						FechaActivacion="idServicio" Activo="idServicio" />
+					<xsd:element name="TN" type="xsd:string"
+						FechaActivacion="idServicio" Activo="idServicio" TN="idServicio" />
+					<xsd:element name="LineType" type="xsd:string"
+						FechaActivacion="idServicio" Activo="idServicio" TN="idServicio"
+						LineType="idServicio" />
+					<xsd:element name="SIPUser" type="xsd:string"
+						FechaActivacion="idServicio" Activo="idServicio" TN="idServicio"
+						LineType="idServicio" SIPUser="idServicio" />
+					<xsd:element name="DeviceFQDN" type="xsd:string"
+						FechaActivacion="idServicio" Activo="idServicio" TN="idServicio"
+						LineType="idServicio" SIPUser="idServicio"
+						DeviceFQDN="idServicio" />
+					<xsd:element name="DevicePort" type="xsd:string"
+						FechaActivacion="idServicio" Activo="idServicio" TN="idServicio"
+						LineType="idServicio" SIPUser="idServicio" DeviceFQDN="idServicio"
+						DevicePort="idServicio" />
+					<xsd:element name="AdminStatus" type="xsd:string"
+						FechaActivacion="idServicio" Activo="idServicio" TN="idServicio"
+						LineType="idServicio" SIPUser="idServicio" DeviceFQDN="idServicio"
+						DevicePort="idServicio" AdminStatus="idServicio" />
+					<xsd:element name="RoutingProfile" type="xsd:string"
+						FechaActivacion="idServicio" Activo="idServicio" TN="idServicio"
+						LineType="idServicio" SIPUser="idServicio" DeviceFQDN="idServicio"
+						DevicePort="idServicio" AdminStatus="idServicio"
+						RoutingProfile="idServicio" />
+					<xsd:element name="EndpointProfile"
+						type="xsd:string" FechaActivacion="idServicio" Activo="idServicio"
+						TN="idServicio" LineType="idServicio" SIPUser="idServicio"
+						DeviceFQDN="idServicio" DevicePort="idServicio"
+						AdminStatus="idServicio" RoutingProfile="idServicio"
+						EndpointProfile="idServicio" />
+					<xsd:element name="CarrierProfile" type="xsd:string"
+						FechaActivacion="idServicio" Activo="idServicio" TN="idServicio"
+						LineType="idServicio" SIPUser="idServicio" DeviceFQDN="idServicio"
+						DevicePort="idServicio" AdminStatus="idServicio"
+						RoutingProfile="idServicio" EndpointProfile="idServicio"
+						CarrierProfile="idServicio" />
+					<xsd:element name="SoftSwitchProfile"
+						type="xsd:string" FechaActivacion="idServicio" Activo="idServicio"
+						TN="idServicio" LineType="idServicio" SIPUser="idServicio"
+						DeviceFQDN="idServicio" DevicePort="idServicio"
+						AdminStatus="idServicio" RoutingProfile="idServicio"
+						EndpointProfile="idServicio" CarrierProfile="idServicio"
+						SoftSwitchProfile="idServicio" />
+					<xsd:element name="Gateway" type="xsd:string"
+						FechaActivacion="idServicio" Activo="idServicio" TN="idServicio"
+						LineType="idServicio" SIPUser="idServicio" DeviceFQDN="idServicio"
+						DevicePort="idServicio" AdminStatus="idServicio"
+						RoutingProfile="idServicio" EndpointProfile="idServicio"
+						CarrierProfile="idServicio" SoftSwitchProfile="idServicio" />
+					<xsd:element name="Padre" type="xsd:string"
+						FechaActivacion="idServicio" Activo="idServicio" TN="idServicio"
+						LineType="idServicio" SIPUser="idServicio" DeviceFQDN="idServicio"
+						DevicePort="idServicio" AdminStatus="idServicio"
+						RoutingProfile="idServicio" EndpointProfile="idServicio"
+						CarrierProfile="idServicio" SoftSwitchProfile="idServicio" />
+					<xsd:element name="CallFeatures"
+						type="tns:ArrayOfVOIPCallFeaturesReport"
+						FechaActivacion="idServicio" Activo="idServicio" ="idServicio"
+						LineType="idServicio" SIPUser="idServicio" DeviceFQDN="idServicio"
+						DevicePort="idServicio" AdminStatus="idServicio"
+						RoutingProfile="idServicio" EndpointProfile="idServicio"
+						CarrierProfile="idServicio" SoftSwitchProfile="idServicio" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="TVReport">
+				<xsd:sequence>
+					<xsd:element name="ACC" type="tns:ArrayOfAccReport" />
+					<xsd:element name="DAC"
+						type="tns:NotImplementedYet" />
+					<xsd:element name="TOCOM"
+						type="tns:NotImplementedYet" />
+					<xsd:element name="NAGRAVISION"
+						type="tns:NotImplementedYet" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="PacketCableEndPointsReport">
+				<xsd:sequence>
+					<xsd:element name="idServicio" type="xsd:string" />
+					<xsd:element name="idProducto" type="xsd:string" />
+					<xsd:element name="idVenta" type="xsd:string" />
+					<xsd:element name="idServicioPadre"
+						type="xsd:string" />
+					<xsd:element name="idProductoPadre"
+						type="xsd:string" />
+					<xsd:element name="idVentaPadre" type="xsd:string" />
+					<xsd:element name="TN" type="xsd:string" />
+					<xsd:element name="epProfile" type="xsd:string" />
+					<xsd:element name="epHomeExchange"
+						type="xsd:string" />
+					<xsd:element name="FechaAlta" type="xsd:string" />
+					<xsd:element name="Activo" type="xsd:string" />
+					<xsd:element name="callFeatures"
+						type="tns:ArrayOfPacketCableCallFeaturesReport" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SIPEndPointsReport">
+				<xsd:sequence>
+					<xsd:element name="idServicio" type="xsd:string" />
+					<xsd:element name="idProducto" type="xsd:string" />
+					<xsd:element name="idVenta" type="xsd:string" />
+					<xsd:element name="idServicioPadre"
+						type="xsd:string" />
+					<xsd:element name="idProductoPadre"
+						type="xsd:string" />
+					<xsd:element name="idVentaPadre" type="xsd:string" />
+					<xsd:element name="TN" type="xsd:string" />
+					<xsd:element name="epProfile" type="xsd:string" />
+					<xsd:element name="FechaAlta" type="xsd:string" />
+					<xsd:element name="Activo" type="xsd:string" />
+					<xsd:element name="callFeatures"
+						type="tns:ArrayOfSIPCallFeaturesReport" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="PacketCableCallFeaturesReport">
+				<xsd:sequence>
+					<xsd:element name="idServicio" type="xsd:string" />
+					<xsd:element name="idProducto" type="xsd:string" />
+					<xsd:element name="idVenta" type="xsd:string" />
+					<xsd:element name="idServicioPadre"
+						type="xsd:string" />
+					<xsd:element name="idProductoPadre"
+						type="xsd:string" />
+					<xsd:element name="idVentaPadre" type="xsd:string" />
+					<xsd:element name="cfCRMId" type="xsd:string" />
+					<xsd:element name="cfName" type="xsd:string" />
+					<xsd:element name="cfSVSubscribed"
+						type="xsd:string" />
+					<xsd:element name="cfIWSubscribed"
+						type="xsd:string" />
+					<xsd:element name="cfCustom1" type="xsd:string" />
+					<xsd:element name="cfCustom2" type="xsd:string" />
+					<xsd:element name="cfCustom3" type="xsd:string" />
+					<xsd:element name="cfCustom4" type="xsd:string" />
+					<xsd:element name="cfCustom5" type="xsd:string" />
+					<xsd:element name="cfCustom6" type="xsd:string" />
+					<xsd:element name="cfCustom7" type="xsd:string" />
+					<xsd:element name="cfCustom8" type="xsd:string" />
+					<xsd:element name="cfCustom9" type="xsd:string" />
+					<xsd:element name="cfCustom10" type="xsd:string" />
+					<xsd:element name="cfCustom11" type="xsd:string" />
+					<xsd:element name="cfCustom12" type="xsd:string" />
+					<xsd:element name="cfCustom13" type="xsd:string" />
+					<xsd:element name="cfCustom14" type="xsd:string" />
+					<xsd:element name="cfCustom15" type="xsd:string" />
+					<xsd:element name="cfCustom16" type="xsd:string" />
+					<xsd:element name="cfCustom17" type="xsd:string" />
+					<xsd:element name="cfCustom18" type="xsd:string" />
+					<xsd:element name="cfCustom19" type="xsd:string" />
+					<xsd:element name="cfCustom20" type="xsd:string" />
+					<xsd:element name="cfCustom21" type="xsd:string" />
+					<xsd:element name="cfCustom22" type="xsd:string" />
+					<xsd:element name="cfCustom23" type="xsd:string" />
+					<xsd:element name="cfCustom24" type="xsd:string" />
+					<xsd:element name="cfCustom25" type="xsd:string" />
+					<xsd:element name="cfCustom26" type="xsd:string" />
+					<xsd:element name="cfCustom27" type="xsd:string" />
+					<xsd:element name="cfCustom28" type="xsd:string" />
+					<xsd:element name="cfCustom29" type="xsd:string" />
+					<xsd:element name="cfCustom30" type="xsd:string" />
+					<xsd:element name="cfCustom31" type="xsd:string" />
+					<xsd:element name="cfCustom32" type="xsd:string" />
+					<xsd:element name="cfCustom33" type="xsd:string" />
+					<xsd:element name="cfCustom34" type="xsd:string" />
+					<xsd:element name="cfCustom35" type="xsd:string" />
+					<xsd:element name="cfCustom36" type="xsd:string" />
+					<xsd:element name="cfCustom37" type="xsd:string" />
+					<xsd:element name="cfCustom38" type="xsd:string" />
+					<xsd:element name="cfCustom39" type="xsd:string" />
+					<xsd:element name="cfCustom40" type="xsd:string" />
+					<xsd:element name="cfActive" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="VOIPCallFeaturesReport">
+				<xsd:sequence>
+					<xsd:element name="idProducto" type="xsd:string" />
+					<xsd:element name="idVenta" type="xsd:string" />
+					<xsd:element name="cfName" type="xsd:string" />
+					<xsd:element name="cfCRMId" type="xsd:string" />
+					<xsd:element name="cfIWSubscribed"
+						type="xsd:string" />
+					<xsd:element name="cfSSSubscribed"
+						type="xsd:string" />
+					<xsd:element name="cfActive" type="xsd:string" />
+					<xsd:element name="cfCustom1" type="xsd:string" />
+					<xsd:element name="cfCustom2" type="xsd:string" />
+					<xsd:element name="cfCustom3" type="xsd:string" />
+					<xsd:element name="cfCustom4" type="xsd:string" />
+					<xsd:element name="cfCustom5" type="xsd:string" />
+					<xsd:element name="cfCustom6" type="xsd:string" />
+					<xsd:element name="cfCustom7" type="xsd:string" />
+					<xsd:element name="cfCustom8" type="xsd:string" />
+					<xsd:element name="cfCustom9" type="xsd:string" />
+					<xsd:element name="cfCustom10" type="xsd:string" />
+					<xsd:element name="cfCustom11" type="xsd:string" />
+					<xsd:element name="cfCustom12" type="xsd:string" />
+					<xsd:element name="cfCustom13" type="xsd:string" />
+					<xsd:element name="cfCustom14" type="xsd:string" />
+					<xsd:element name="cfCustom15" type="xsd:string" />
+					<xsd:element name="cfCustom16" type="xsd:string" />
+					<xsd:element name="cfCustom17" type="xsd:string" />
+					<xsd:element name="cfCustom18" type="xsd:string" />
+					<xsd:element name="cfCustom19" type="xsd:string" />
+					<xsd:element name="cfCustom20" type="xsd:string" />
+					<xsd:element name="cfCustom21" type="xsd:string" />
+					<xsd:element name="cfCustom22" type="xsd:string" />
+					<xsd:element name="cfCustom23" type="xsd:string" />
+					<xsd:element name="cfCustom24" type="xsd:string" />
+					<xsd:element name="cfCustom25" type="xsd:string" />
+					<xsd:element name="cfCustom26" type="xsd:string" />
+					<xsd:element name="cfCustom27" type="xsd:string" />
+					<xsd:element name="cfCustom28" type="xsd:string" />
+					<xsd:element name="cfCustom29" type="xsd:string" />
+					<xsd:element name="cfCustom30" type="xsd:string" />
+					<xsd:element name="cfCustom31" type="xsd:string" />
+					<xsd:element name="cfCustom32" type="xsd:string" />
+					<xsd:element name="cfCustom33" type="xsd:string" />
+					<xsd:element name="cfCustom34" type="xsd:string" />
+					<xsd:element name="cfCustom35" type="xsd:string" />
+					<xsd:element name="cfCustom36" type="xsd:string" />
+					<xsd:element name="cfCustom37" type="xsd:string" />
+					<xsd:element name="cfCustom38" type="xsd:string" />
+					<xsd:element name="cfCustom39" type="xsd:string" />
+					<xsd:element name="cfCustom40" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="Acc">
+				<xsd:sequence>
+					<xsd:element name="idServicio" type="xsd:string" />
+					<xsd:element name="idProducto" type="xsd:string" />
+					<xsd:element name="idVenta" type="xsd:string" />
+					<xsd:element name="idServicioPadre"
+						type="xsd:string" />
+					<xsd:element name="idProductoPadre"
+						type="xsd:string" />
+					<xsd:element name="idVentaPadre" type="xsd:string" />
+					<xsd:element name="SerialNumber" type="xsd:string" />
+					<xsd:element name="ConverterId" type="xsd:string" />
+					<xsd:element name="ConverterType" type="xsd:string" />
+					<xsd:element name="ChannelMap" type="xsd:string" />
+					<xsd:element name="Controller" type="xsd:string" />
+					<xsd:element name="DefaultService"
+						type="xsd:string" />
+					<xsd:element name="Disabled" type="xsd:string" />
+					<xsd:element name="FechaAlta" type="xsd:string" />
+					<xsd:element name="FechaModif" type="xsd:string" />
+					<xsd:element name="FechaActivacion"
+						type="xsd:string" />
+					<xsd:element name="Servicios"
+						type="tns:ArrayOfAccServices" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SIPCallFeaturesReport">
+				<xsd:sequence>
+					<xsd:element name="idServicio" type="xsd:string" />
+					<xsd:element name="idProducto" type="xsd:string" />
+					<xsd:element name="idVenta" type="xsd:string" />
+					<xsd:element name="idServicioPadre"
+						type="xsd:string" />
+					<xsd:element name="idProductoPadre"
+						type="xsd:string" />
+					<xsd:element name="idVentaPadre" type="xsd:string" />
+					<xsd:element name="cfCRMId" type="xsd:string" />
+					<xsd:element name="cfName" type="xsd:string" />
+					<xsd:element name="cfSVSubscribed"
+						type="xsd:string" />
+					<xsd:element name="cfIWSubscribed"
+						type="xsd:string" />
+					<xsd:element name="cfCustom1" type="xsd:string" />
+					<xsd:element name="cfCustom2" type="xsd:string" />
+					<xsd:element name="cfCustom3" type="xsd:string" />
+					<xsd:element name="cfCustom4" type="xsd:string" />
+					<xsd:element name="cfCustom5" type="xsd:string" />
+					<xsd:element name="cfCustom6" type="xsd:string" />
+					<xsd:element name="cfCustom7" type="xsd:string" />
+					<xsd:element name="cfCustom8" type="xsd:string" />
+					<xsd:element name="cfCustom9" type="xsd:string" />
+					<xsd:element name="cfCustom10" type="xsd:string" />
+					<xsd:element name="cfCustom11" type="xsd:string" />
+					<xsd:element name="cfCustom12" type="xsd:string" />
+					<xsd:element name="cfCustom13" type="xsd:string" />
+					<xsd:element name="cfCustom14" type="xsd:string" />
+					<xsd:element name="cfCustom15" type="xsd:string" />
+					<xsd:element name="cfCustom16" type="xsd:string" />
+					<xsd:element name="cfCustom17" type="xsd:string" />
+					<xsd:element name="cfCustom18" type="xsd:string" />
+					<xsd:element name="cfCustom19" type="xsd:string" />
+					<xsd:element name="cfCustom20" type="xsd:string" />
+					<xsd:element name="cfCustom21" type="xsd:string" />
+					<xsd:element name="cfCustom22" type="xsd:string" />
+					<xsd:element name="cfCustom23" type="xsd:string" />
+					<xsd:element name="cfCustom24" type="xsd:string" />
+					<xsd:element name="cfCustom25" type="xsd:string" />
+					<xsd:element name="cfCustom26" type="xsd:string" />
+					<xsd:element name="cfCustom27" type="xsd:string" />
+					<xsd:element name="cfCustom28" type="xsd:string" />
+					<xsd:element name="cfCustom29" type="xsd:string" />
+					<xsd:element name="cfCustom30" type="xsd:string" />
+					<xsd:element name="cfCustom31" type="xsd:string" />
+					<xsd:element name="cfCustom32" type="xsd:string" />
+					<xsd:element name="cfCustom33" type="xsd:string" />
+					<xsd:element name="cfCustom34" type="xsd:string" />
+					<xsd:element name="cfCustom35" type="xsd:string" />
+					<xsd:element name="cfCustom36" type="xsd:string" />
+					<xsd:element name="cfCustom37" type="xsd:string" />
+					<xsd:element name="cfCustom38" type="xsd:string" />
+					<xsd:element name="cfCustom39" type="xsd:string" />
+					<xsd:element name="cfCustom40" type="xsd:string" />
+					<xsd:element name="cfActive" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="AccServices">
+				<xsd:sequence>
+					<xsd:element name="idServicio" type="xsd:string" />
+					<xsd:element name="idProducto" type="xsd:string" />
+					<xsd:element name="idVenta" type="xsd:string" />
+					<xsd:element name="idServicioPadre"
+						type="xsd:string" />
+					<xsd:element name="idProductoPadre"
+						type="xsd:string" />
+					<xsd:element name="idVentaPadre" type="xsd:string" />
+					<xsd:element name="Service" type="xsd:string" />
+					<xsd:element name="FechaAlta" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfDocsisReport">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:DocsisReport[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfAccServices">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:AccServices[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfPacketCableReport">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:PacketCableReport[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfVoiceMailReport">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:VoiceMailReport[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfSIPReport">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:SIPReport[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfVOIPReport">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:VOIPReport[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfPacketCableEndPointsReport">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:PacketCableEndPointsReport[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfSIPEndPointsReport">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:SIPEndPointsReport[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType
+				name="ArrayOfPacketCableCallFeaturesReport">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:PacketCableCallFeaturesReport[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfVOIPCallFeaturesReport">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:VOIPCallFeaturesReport[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfAccReport">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:Acc[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfSIPCallFeaturesReport">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:SIPCallFeaturesReport[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="createTempMTAOutput">
+				<xsd:sequence>
+					<xsd:element name="idError" type="xsd:string" />
+					<xsd:element name="errorStr" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="createTempSIPDeviceOutput">
+				<xsd:sequence>
+					<xsd:element name="idError" type="xsd:string" />
+					<xsd:element name="errorStr" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="activateADSLInput">
+				<xsd:sequence>
+					<xsd:element name="activationCode"
+						type="xsd:string" />
+					<xsd:element name="username" type="xsd:string" />
+					<xsd:element name="password" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="activateADSLOutput">
+				<xsd:sequence>
+					<xsd:element name="idError" type="xsd:string" />
+					<xsd:element name="errorStr" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfActivityObjOutput">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:ActivityObjOutput[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="leasesObj">
+				<xsd:sequence>
+					<xsd:element name="fecha" type="xsd:string" />
+					<xsd:element name="ip" type="xsd:string" />
+					<xsd:element name="macaddress" type="xsd:string" />
+					<xsd:element name="manufacturer" type="xsd:string" />
+					<xsd:element name="online" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="mensajesObj">
+				<xsd:sequence>
+					<xsd:element name="idMensajeCRM" type="xsd:string" />
+					<xsd:element name="nombre" type="xsd:string" />
+					<xsd:element name="descripcion" type="xsd:string" />
+					<xsd:element name="removible" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="spDescriptionObj">
+				<xsd:sequence>
+					<xsd:element name="ServicePackageName"
+						type="xsd:string" />
+					<xsd:element name="ServicePackageCRMId"
+						type="xsd:string" />
+					<xsd:element name="COS" type="xsd:string" />
+					<xsd:element name="ServiceFlowsUpstream"
+						type="tns:ArrayOfFlowsObj" />
+					<xsd:element name="ServiceFlowsDownstream"
+						type="tns:ArrayOfFlowsObj" />
+					<xsd:element name="GrupoComandosSNMP"
+						type="tns:ArrayOfComandosObj" />
+					<xsd:element name="OpcionesAdicionales"
+						type="tns:ArrayOfOpcionesObj" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="comandosObj">
+				<xsd:sequence>
+					<xsd:element name="grupo" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfComandosObj">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:comandosObj[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="opcionesObj">
+				<xsd:sequence>
+					<xsd:element name="opcion" type="xsd:string" />
+					<xsd:element name="valor" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfOpcionesObj">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:opcionesObj[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="flowsObj">
+				<xsd:sequence>
+					<xsd:element name="ServiceFlow" type="xsd:string" />
+					<xsd:element name="ServiceClassifier"
+						type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfFlowsObj">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:flowsObj[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="poolingObj">
+				<xsd:sequence>
+					<xsd:element name="cmPoolingId" type="xsd:string" />
+					<xsd:element name="firstPoolingDate"
+						type="xsd:string" />
+					<xsd:element name="lastPoolingDate"
+						type="xsd:string" />
+					<xsd:element name="repetitions" type="xsd:string" />
+					<xsd:element name="lastTimeoutDate"
+						type="xsd:string" />
+					<xsd:element name="totalTimeouts" type="xsd:string" />
+					<xsd:element name="dsPower" type="xsd:string" />
+					<xsd:element name="usPower" type="xsd:string" />
+					<xsd:element name="dsSNR" type="xsd:string" />
+					<xsd:element name="upSNR" type="xsd:string" />
+					<xsd:element name="downChannel" type="xsd:string" />
+					<xsd:element name="upChannel" type="xsd:string" />
+					<xsd:element name="rxPower" type="xsd:string" />
+					<xsd:element name="dsGoodCW" type="xsd:string" />
+					<xsd:element name="dsCorrectableCW"
+						type="xsd:string" />
+					<xsd:element name="lastDSGoodCW" type="xsd:string" />
+					<xsd:element name="lastDSCorrectableCW"
+						type="xsd:string" />
+					<xsd:element name="lastDSUnCorrectableCW"
+						type="xsd:string" />
+					<xsd:element name="usGoodCW" type="xsd:string" />
+					<xsd:element name="usCorrectableCW"
+						type="xsd:string" />
+					<xsd:element name="lastUSGoodCW" type="xsd:string" />
+					<xsd:element name="lastUSCorrectableCW"
+						type="xsd:string" />
+					<xsd:element name="lastUSUnCorrectableCW"
+						type="xsd:string" />
+					<xsd:element name="txSlotsDenied" type="xsd:string" />
+					<xsd:element name="lastTXSlotsDenied"
+						type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ActivityObjOutput">
+				<xsd:sequence>
+					<xsd:element name="idCaller" type="xsd:string" />
+					<xsd:element name="idEntradaCaller"
+						type="xsd:string" />
+					<xsd:element name="idSalida" type="xsd:string" />
+					<xsd:element name="idInterface" type="xsd:string" />
+					<xsd:element name="idEstado" type="xsd:string" />
+					<xsd:element name="asyncronic" type="xsd:string" />
+					<xsd:element name="fechaDiferido" type="xsd:string" />
+					<xsd:element name="idCliente" type="xsd:string" />
+					<xsd:element name="idClienteCRM" type="xsd:string" />
+					<xsd:element name="idEmpresa" type="xsd:string" />
+					<xsd:element name="idEmpresaCRM" type="xsd:string" />
+					<xsd:element name="idVenta" type="xsd:string" />
+					<xsd:element name="idVentaPadre" type="xsd:string" />
+					<xsd:element name="idServicio" type="xsd:string" />
+					<xsd:element name="idProducto" type="xsd:string" />
+					<xsd:element name="idServicioPadre"
+						type="xsd:string" />
+					<xsd:element name="idProductoPadre"
+						type="xsd:string" />
+					<xsd:element name="idPromotor" type="xsd:string" />
+					<xsd:element name="xmlEncoding" type="xsd:string" />
+					<xsd:element name="fechaIngreso" type="xsd:string" />
+					<xsd:element name="fechaProcesado"
+						type="xsd:string" />
+					<xsd:element name="idError" type="xsd:string" />
+					<xsd:element name="errorStr" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="DocsisStatusObjOutput">
+				<xsd:sequence>
+					<xsd:element name="idClienteCRM" type="xsd:string" />
+					<xsd:element name="nombre" type="xsd:string" />
+					<xsd:element name="username" type="xsd:string" />
+					<xsd:element name="macaddress" type="xsd:string" />
+					<xsd:element name="productName" type="xsd:string" />
+					<xsd:element name="manufacturer" type="xsd:string" />
+					<xsd:element name="hwv" type="xsd:string" />
+					<xsd:element name="swv" type="xsd:string" />
+					<xsd:element name="ip" type="xsd:string" />
+					<xsd:element name="cmts" type="xsd:string" />
+					<xsd:element name="upStream" type="xsd:string" />
+					<xsd:element name="downStream" type="xsd:string" />
+					<xsd:element name="ispCM" type="xsd:string" />
+					<xsd:element name="ispMTA" type="xsd:string" />
+					<xsd:element name="ispCPE" type="xsd:string" />
+					<xsd:element name="servicePackage"
+						type="xsd:string" />
+					<xsd:element name="docsisVersion" type="xsd:string" />
+					<xsd:element name="cantPCs" type="xsd:string" />
+					<xsd:element name="disabled" type="xsd:string" />
+					<xsd:element name="cantMensajes" type="xsd:string" />
+					<xsd:element name="upTraffic" type="xsd:string" />
+					<xsd:element name="downTraffic" type="xsd:string" />
+					<xsd:element name="hub" type="xsd:string" />
+					<xsd:element name="nodo" type="xsd:string" />
+					<xsd:element name="CmStatus" type="xsd:string" />
+					<xsd:element name="uspl" type="xsd:string" />
+					<xsd:element name="dspl" type="xsd:string" />
+					<xsd:element name="dssnr" type="xsd:string" />
+					<xsd:element name="ussnr" type="xsd:string" />
+					<xsd:element name="pollingSource" type="xsd:string" />
+					<xsd:element name="pollingDate" type="xsd:string" />
+					<xsd:element name="pollingage" type="xsd:string" />
+					<xsd:element name="sysuptime" type="xsd:string" />
+					<xsd:element name="status" type="xsd:string" />
+					<xsd:element name="cmLeases"
+						type="tns:ArrayOfLeasesObj" />
+					<xsd:element name="cpeLeases"
+						type="tns:ArrayOfLeasesObj" />
+					<xsd:element name="mtaLeases"
+						type="tns:ArrayOfLeasesObj" />
+					<xsd:element name="mensajes"
+						type="tns:ArrayOfMensajesObj" />
+					<xsd:element name="pooling"
+						type="tns:ArrayOfPoolingObj" />
+					<xsd:element name="spDescription"
+						type="tns:spDescriptionObj" />
+					<xsd:element name="mtaMacAddress" type="xsd:string" />
+					<xsd:element name="mtaHostname" type="xsd:string" />
+					<xsd:element name="mtaFQDN" type="xsd:string" />
+					<xsd:element name="mtaIPAddress" type="xsd:string" />
+					<xsd:element name="mtaCMSName" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfInterfaceObjInput">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:InterfaceObjInput[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfLeasesObj">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:leasesObj[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfMensajesObj">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:mensajesObj[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfInterfaceObjOutput">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:InterfaceObjOutput[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfPoolingObj">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:poolingObj[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="MaintenanceObjInput">
+				<xsd:sequence>
+					<xsd:element name="idEntradaCaller"
+						type="xsd:string" />
+					<xsd:element name="idEmpresaCRM" type="xsd:string" />
+					<xsd:element name="idServicio" type="xsd:string" />
+					<xsd:element name="idVenta" type="xsd:string" />
+					<xsd:element name="idProducto" type="xsd:string" />
+					<xsd:element name="xmlEncoding" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="MaintenanceObjOutput">
+				<xsd:sequence>
+					<xsd:element name="idEntradaCaller"
+						type="xsd:string" />
+					<xsd:element name="idError" type="xsd:string" />
+					<xsd:element name="errorStr" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			
+			
+			<xsd:complexType name="ArrayOfMaintenanceObjOutput">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array" >
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:MaintenanceObjOutput[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			
+			
+			
+			<xsd:complexType name="ArrayOfMaintenanceObjInput">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:MaintenanceObjInput[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="DocsisTrafficReportCMObjOutput">
+				<xsd:sequence>
+					<xsd:element name="idServicio" type="xsd:string" />
+					<xsd:element name="idProducto" type="xsd:string" />
+					<xsd:element name="idVenta" type="xsd:string" />
+					<xsd:element name="idServicioPadre"
+						type="xsd:string" />
+					<xsd:element name="idProductoPadre"
+						type="xsd:string" />
+					<xsd:element name="idVentaPadre" type="xsd:string" />
+					<xsd:element name="MACAddress" type="xsd:string" />
+					<xsd:element name="USTraffic" type="xsd:string" />
+					<xsd:element name="DSTraffic" type="xsd:string" />
+					<xsd:element name="recordFromDate"
+						type="xsd:string" />
+					<xsd:element name="recordToDate" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="AuditDOCSISMessagesObjOutput">
+				<xsd:sequence>
+					<xsd:element name="MessageCRMId" type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="AuditDOCSISObjOutput">
+				<xsd:sequence>
+					<xsd:element name="idServicio" type="xsd:string" />
+					<xsd:element name="idProducto" type="xsd:string" />
+					<xsd:element name="idVenta" type="xsd:string" />
+					<xsd:element name="idServicioPadre"
+						type="xsd:string" />
+					<xsd:element name="idProductoPadre"
+						type="xsd:string" />
+					<xsd:element name="idVentaPadre" type="xsd:string" />
+					<xsd:element name="MACAddress" type="xsd:string" />
+					<xsd:element name="ServicePackageCRMId"
+						type="xsd:string" />
+					<xsd:element name="MaxCPE" type="xsd:string" />
+					<xsd:element name="Messages"
+						type="tns:ArrayOfAuditDOCSISMessagesObjOutput" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="AuditPacketCableObjOutput">
+				<xsd:sequence>
+					<xsd:element name="idServicio" type="xsd:string" />
+					<xsd:element name="idProducto" type="xsd:string" />
+					<xsd:element name="idVenta" type="xsd:string" />
+					<xsd:element name="idServicioPadre"
+						type="xsd:string" />
+					<xsd:element name="idProductoPadre"
+						type="xsd:string" />
+					<xsd:element name="idVentaPadre" type="xsd:string" />
+					<xsd:element name="MACAddress" type="xsd:string" />
+					<xsd:element name="EndPoints"
+						type="tns:ArrayOfAuditPacketCableEndPointObjOutput" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="AuditPacketCableEndPointObjOutput">
+				<xsd:sequence>
+					<xsd:element name="idServicio" type="xsd:string" />
+					<xsd:element name="idProducto" type="xsd:string" />
+					<xsd:element name="idVenta" type="xsd:string" />
+					<xsd:element name="idServicioPadre"
+						type="xsd:string" />
+					<xsd:element name="idProductoPadre"
+						type="xsd:string" />
+					<xsd:element name="idVentaPadre" type="xsd:string" />
+					<xsd:element name="TN" type="xsd:string" />
+					<xsd:element name="EndPointNumber"
+						type="xsd:string" />
+					<xsd:element name="HomeExchangeCRMId"
+						type="xsd:string" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType
+				name="ArrayOfDocsisTrafficReportCMObjOutput">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:DocsisTrafficReportCMObjOutput[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfAuditDOCSISObjOutput">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:AuditDOCSISObjOutput[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType
+				name="ArrayOfAuditDOCSISMessagesObjOutput">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:AuditDOCSISMessagesObjOutput[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfAuditPacketCableObjOutput">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:AuditPacketCableObjOutput[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType
+				name="ArrayOfAuditPacketCableEndPointObjOutput">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:AuditPacketCableEndPointObjOutput[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="DocsisTrafficReportObjOutput">
+				<xsd:sequence>
+					<xsd:element name="idClienteCRM" type="xsd:string" />
+					<xsd:element name="CableModems"
+						type="tns:ArrayOfDocsisTrafficReportCMObjOutput" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="AuditObjOutput">
+				<xsd:sequence>
+					<xsd:element name="idEmpresaCRM" type="xsd:string" />
+					<xsd:element name="idClienteCRM" type="xsd:string" />
+					<xsd:element name="DOCSIS"
+						type="tns:ArrayOfAuditDOCSISObjOutput" />
+					<xsd:element name="PacketCable"
+						type="tns:ArrayOfAuditPacketCableObjOutput" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType
+				name="ArrayOfDocsisTrafficReportObjOutput">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:DocsisTrafficReportObjOutput[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+			<xsd:complexType name="ArrayOfAuditObjOutput">
+				<xsd:complexContent>
+					<xsd:restriction base="SOAP-ENC:Array">
+						<xsd:attribute ref="SOAP-ENC:arrayType"
+							wsdl:arrayType="tns:AuditObjOutput[]" />
+					</xsd:restriction>
+				</xsd:complexContent>
+			</xsd:complexType>
+		</xsd:schema>
+	</types>
+	<message name="PutRequest">
+		<part name="authKey" type="xsd:string" />
+		<part name="ArrayOfInterfaceObjInput"
+			type="tns:ArrayOfInterfaceObjInput" />
+		<part name="doAtomic" type="xsd:string" />
+	</message>
+	<message name="PutResponse">
+		<part name="ArrayOfInterfaceObjOutput"
+			type="tns:ArrayOfInterfaceObjOutput" />
+	</message>
+	<message name="GetActivityRequest">
+		<part name="authKey" type="xsd:string" />
+		<part name="xmlEncoding" type="xsd:string" />
+	</message>
+	<message name="GetActivityResponse">
+		<part name="idError" type="xsd:string" />
+		<part name="errorStr" type="xsd:string" />
+		<part name="ArrayOfActivityObjOutput"
+			type="tns:ArrayOfActivityObjOutput" />
+	</message>
+	<message name="GetDocsisStatusRequest">
+		<part name="authKey" type="xsd:string" />
+		<part name="idEmpresaCRM" type="xsd:string" />
+		<part name="idServicio" type="xsd:string" />
+		<part name="idVenta" type="xsd:string" />
+		<part name="idProducto" type="xsd:string" />
+		<part name="xmlEncoding" type="xsd:string" />
+	</message>
+	<message name="GetDocsisStatusResponse">
+		<part name="idError" type="xsd:string" />
+		<part name="errorStr" type="xsd:string" />
+		<part name="DocsisStatusObjOutput"
+			type="tns:DocsisStatusObjOutput" />
+	</message>
+	<message name="MaintenanceRequest">
+		<part name="authKey" type="xsd:string" />
+		<part name="ArrayOfMaintenanceObjInput"
+			type="tns:ArrayOfMaintenanceObjInput" />
+	</message>
+	<message name="MaintenanceResponse">
+		<part name="ArrayOfMaintenanceObjOutput"
+			type="tns:ArrayOfMaintenanceObjOutput" />
+	</message>
+	<message name="InternalRequest">
+		<part name="authKey" type="xsd:string" />
+		<part name="xmlEncoding" type="xsd:string" />
+	</message>
+	<message name="InternalResponse">
+		<part name="Output" type="tns:InternalObjOutput" />
+	</message>
+	<message name="createTempMTARequest">
+		<part name="authKey" type="xsd:string" />
+		<part name="Input" type="tns:createTempMTAInput" />
+	</message>
+	<message name="createTempMTAResponse">
+		<part name="Output" type="tns:createTempMTAOutput" />
+	</message>
+	<message name="createTempSIPDeviceRequest">
+		<part name="authKey" type="xsd:string" />
+		<part name="Input" type="tns:createTempSIPDeviceInput" />
+	</message>
+	<message name="createTempSIPDeviceResponse">
+		<part name="Output" type="tns:createTempSIPDeviceOutput" />
+	</message>
+	<message name="activateADSLRequest">
+		<part name="authKey" type="xsd:string" />
+		<part name="Input" type="tns:activateADSLInput" />
+	</message>
+	<message name="activateADSLResponse">
+		<part name="Output" type="tns:activateADSLOutput" />
+	</message>
+	<message name="GetReportRequest">
+		<part name="authKey" type="xsd:string" />
+		<part name="idEmpresaCRM" type="xsd:string" />
+		<part name="idClienteCRM" type="xsd:string" />
+		<part name="cantRecords" type="xsd:string" />
+		<part name="showProducts" type="tns:ReportObjInput" />
+	</message>
+	<message name="GetReportResponse">
+		<part name="idError" type="xsd:string" />
+		<part name="errorStr" type="xsd:string" />
+		<part name="report" type="tns:ArrayOfReportObjOutput" />
+	</message>
+	<message name="GetCustomReportRequest">
+		<part name="authKey" type="xsd:string" />
+		<part name="showProducts" type="xsd:string" />
+	</message>
+	<message name="GetCustomReportResponse">
+		<part name="idError" type="xsd:string" />
+		<part name="errorStr" type="xsd:string" />
+		<part name="report" type="tns:ArrayOfReportObjOutput" />
+	</message>
+	<message name="GetDocsisTrafficReportRequest">
+		<part name="authKey" type="xsd:string" />
+		<part name="idEmpresaCRM" type="xsd:string" />
+		<part name="idClienteCRM" type="xsd:string" />
+		<part name="cantRecords" type="xsd:string" />
+		<part name="fromDate" type="xsd:string" />
+		<part name="toDate" type="xsd:string" />
+	</message>
+	<message name="GetDocsisTrafficReportResponse">
+		<part name="idError" type="xsd:string" />
+		<part name="errorStr" type="xsd:string" />
+		<part name="report"
+			type="tns:ArrayOfDocsisTrafficReportObjOutput" />
+	</message>
+	<message name="AuditRequest">
+		<part name="authKey" type="xsd:string" />
+		<part name="idEmpresaCRM" type="xsd:string" />
+		<part name="idClienteCRM" type="xsd:string" />
+		<part name="cantRecords" type="xsd:string" />
+		<part name="xmlEncoding" type="xsd:string" />
+	</message>
+	<message name="AuditResponse">
+		<part name="idError" type="xsd:string" />
+		<part name="errorStr" type="xsd:string" />
+		<part name="report" type="tns:ArrayOfAuditObjOutput" />
+	</message>
+	<portType name="IntrawayWSDLPortType">
+		<operation name="Put">
+			<documentation>Este es el metodo put.....</documentation>
+			<input message="tns:PutRequest" />
+			<output message="tns:PutResponse" />
+		</operation>
+		<operation name="GetActivity">
+			<documentation>
+				Este es el metodo GetActivity.....
+			</documentation>
+			<input message="tns:GetActivityRequest" />
+			<output message="tns:GetActivityResponse" />
+		</operation>
+		<operation name="GetDocsisStatus">
+			<documentation>
+				XMLEncoding:
+				&amp;lt;DocsisStatusParameters&amp;gt;&amp;lt;getBasicData&amp;gt;&amp;lt;status&amp;gt;TRUE&amp;lt;/status&amp;gt;&amp;lt;/getBasicData&amp;gt;&amp;lt;getCMLeases&amp;gt;&amp;lt;status&amp;gt;FALSE&amp;lt;/status&amp;gt;&amp;lt;order&amp;gt;DESC&amp;lt;/order&amp;gt;&amp;lt;cantRecords&amp;gt;50&amp;lt;/cantRecords&amp;gt;&amp;lt;/getCMLeases&amp;gt;&amp;lt;getMTALeases&amp;gt;&amp;lt;status&amp;gt;FALSE&amp;lt;/status&amp;gt;&amp;lt;order&amp;gt;DESC&amp;lt;/order&amp;gt;&amp;lt;cantRecords&amp;gt;50&amp;lt;/cantRecords&amp;gt;&amp;lt;/getMTALeases&amp;gt;&amp;lt;getCPELeases&amp;gt;&amp;lt;status&amp;gt;FALSE&amp;lt;/status&amp;gt;&amp;lt;order&amp;gt;DESC&amp;lt;/order&amp;gt;&amp;lt;cantRecords&amp;gt;50&amp;lt;/cantRecords&amp;gt;&amp;lt;/getCPELeases&amp;gt;&amp;lt;getSPDescription&amp;gt;&amp;lt;status&amp;gt;FALSE&amp;lt;/status&amp;gt;&amp;lt;/getSPDescription&amp;gt;&amp;lt;getPoolingData&amp;gt;&amp;lt;status&amp;gt;FALSE&amp;lt;/status&amp;gt;&amp;lt;order&amp;gt;ASC&amp;lt;/order&amp;gt;&amp;lt;cantRecords&amp;gt;ALL&amp;lt;/cantRecords&amp;gt;&amp;lt;/getPoolingData&amp;gt;&amp;lt;/DocsisStatusParameters&amp;gt;
+			</documentation>
+			<input message="tns:GetDocsisStatusRequest" />
+			<output message="tns:GetDocsisStatusResponse" />
+		</operation>
+		<operation name="Maintenance">
+			<documentation>
+				Este es el metodo Maintenance.....
+			</documentation>
+			<input message="tns:MaintenanceRequest" />
+			<output message="tns:MaintenanceResponse" />
+		</operation>
+		<operation name="Internal">
+			<documentation>
+				Este es el metodo Internal.....
+			</documentation>
+			<input message="tns:InternalRequest" />
+			<output message="tns:InternalResponse" />
+		</operation>
+		<operation name="createTempMTA">
+			<documentation>
+				Este es el metodo createTempMTA.....
+			</documentation>
+			<input message="tns:createTempMTARequest" />
+			<output message="tns:createTempMTAResponse" />
+		</operation>
+		<operation name="createTempSIPDevice">
+			<documentation>
+				Este es el metodo createTempSIPDevice.....
+			</documentation>
+			<input message="tns:createTempSIPDeviceRequest" />
+			<output message="tns:createTempSIPDeviceResponse" />
+		</operation>
+		<operation name="activateADSL">
+			<documentation>
+				Este es el metodo activateADSL.....
+			</documentation>
+			<input message="tns:activateADSLRequest" />
+			<output message="tns:activateADSLResponse" />
+		</operation>
+		<operation name="GetReport">
+			<documentation>
+				Este es el metodo GetReport.....
+			</documentation>
+			<input message="tns:GetReportRequest" />
+			<output message="tns:GetReportResponse" />
+		</operation>
+		<operation name="GetCustomReport">
+			<documentation>
+				Este es el metodo GetReport.....
+			</documentation>
+			<input message="tns:GetCustomReportRequest" />
+			<output message="tns:GetCustomReportResponse" />
+		</operation>
+		<operation name="GetDocsisTrafficReport">
+			<documentation>
+				M&amp;eacute;todo SOAP para la obtenci&amp;oacute;n de
+				Reportes de Tr&amp;aacute;fico de Cable Modems DOCSIS
+				entre dos fechas DD/MM/YYYY. idClienteCRM debe ser el
+				C&amp;oacute;d. de Cliente del &amp;uacute;ltimo cliente
+				obtenido o vac&amp;iacute;o.
+			</documentation>
+			<input message="tns:GetDocsisTrafficReportRequest" />
+			<output message="tns:GetDocsisTrafficReportResponse" />
+		</operation>
+		<operation name="Audit">
+			<documentation>
+				M&amp;eacute;todo SOAP para la obtenci&amp;oacute;n de
+				Reportes para Auditor&amp;iacute;a.
+			</documentation>
+			<input message="tns:AuditRequest" />
+			<output message="tns:AuditResponse" />
+		</operation>
+	</portType>
+	<binding name="IntrawayWSDLBinding"
+		type="tns:IntrawayWSDLPortType">
+		<soap:binding style="rpc"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="Put">
+			<soap:operation soapAction="urn:IntrawayWSDL#Put"
+				style="rpc" />
+			<input>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		<operation name="GetActivity">
+			<soap:operation soapAction="urn:IntrawayWSDL#GetActivity"
+				style="rpc" />
+			<input>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		<operation name="GetDocsisStatus">
+			<soap:operation
+				soapAction="urn:IntrawayWSDL#GetDocsisStatus" style="rpc" />
+			<input>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		<operation name="Maintenance">
+			<soap:operation soapAction="urn:IntrawayWSDL#Maintenance"
+				style="rpc" />
+			<input>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		<operation name="Internal">
+			<soap:operation soapAction="urn:IntrawayWSDL#Internal"
+				style="rpc" />
+			<input>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		<operation name="createTempMTA">
+			<soap:operation soapAction="urn:IntrawayWSDL#createTempMTA"
+				style="rpc" />
+			<input>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		<operation name="createTempSIPDevice">
+			<soap:operation
+				soapAction="urn:IntrawayWSDL#createTempSIPDevice" style="rpc" />
+			<input>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		<operation name="activateADSL">
+			<soap:operation soapAction="urn:IntrawayWSDL#activateADSL"
+				style="rpc" />
+			<input>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		<operation name="GetReport">
+			<soap:operation soapAction="urn:IntrawayWSDL#GetReport"
+				style="rpc" />
+			<input>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		<operation name="GetCustomReport">
+			<soap:operation soapAction="urn:IntrawayWSDL#GetReport"
+				style="rpc" />
+			<input>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		<operation name="GetDocsisTrafficReport">
+			<soap:operation
+				soapAction="urn:IntrawayWSDL#GetDocsisTrafficReport" style="rpc" />
+			<input>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		<operation name="Audit">
+			<soap:operation soapAction="urn:IntrawayWSDL#Audit"
+				style="rpc" />
+			<input>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:IntrawayWSDL"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+	</binding>
+	<service name="IntrawayWSDL">
+		<port name="IntrawayWSDLPort"
+			binding="tns:IntrawayWSDLBinding">
+			<soap:address
+				location="http://200.63.212.61/IntrawayWS/server.php" />
+		</port>
+	</service>
+</definitions>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://safariview.satnet.net/jboss-net/services/PcspI01Service" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://safariview.satnet.net/jboss-net/services/PcspI01Service" xmlns:intf="http://safariview.satnet.net/jboss-net/services/PcspI01Service" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://common.safariview2.cedarpointcom.com" xmlns:tns2="http://www.packetcable.com/pcsp/i01" xmlns:tns3="http://net.jboss.org/jmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><wsdl:types><schema targetNamespace="http://common.safariview2.cedarpointcom.com" xmlns="http://www.w3.org/2001/XMLSchema"><import namespace="http://schemas.xmlsoap.org/soap/encoding/"/><complexType name="DeviceInfo"><sequence><element name="connected" type="xsd:boolean"/><element name="deviceType" nillable="true" type="xsd:string"/><element name="genericAttrs" nillable="true" type="xsd:string"/><element name="hasPoorConnection" type="xsd:boolean"/><element name="host" nillable="true" type="xsd:string"/><element name="id" nillable="true" type="xsd:string"/><element name="inSync" type="xsd:boolean"/><element name="liveUpgrade" type="xsd:boolean"/><element name="location" nillable="true" type="xsd:string"/><element name="name" nillable="true" type="xsd:string"/><element name="notes" nillable="true" type="xsd:string"/><element name="port" type="xsd:int"/><element name="severity" nillable="true" type="xsd:string"/><element name="trapsEnabled" type="xsd:boolean"/><element name="version" nillable="true" type="xsd:string"/><element name="versionNumber" nillable="true" type="xsd:anyType"/></sequence></complexType><complexType name="SVResponse"><sequence><element name="statusString" nillable="true" type="xsd:string"/><element name="payload" nillable="true" type="xsd:anyType"/><element name="message" nillable="true" type="xsd:string"/><element name="status" type="xsd:int"/><element name="deviceInfo" nillable="true" type="tns1:DeviceInfo"/></sequence></complexType><complexType name="SVRequest"><sequence><element name="sessionToken" nillable="true" type="xsd:string"/><element name="deviceId" nillable="true" type="xsd:string"/><element name="reqCategory" nillable="true" type="xsd:string"/><element name="reqType" nillable="true" type="xsd:string"/><element name="reqAction" nillable="true" type="xsd:string"/><element name="payload" nillable="true" type="xsd:anyType"/></sequence></complexType></schema><schema targetNamespace="http://www.packetcable.com/pcsp/i01" xmlns="http://www.w3.org/2001/XMLSchema"><import namespace="http://schemas.xmlsoap.org/soap/encoding/"/><complexType name="PcspObj"><sequence><element name="cmdId" type="xsd:int"/><element name="cmdStatus" type="xsd:int"/><element name="entityName" nillable="true" type="xsd:string"/><element name="errorMessage" nillable="true" type="xsd:string"/><element name="key" nillable="true" type="xsd:string"/><element name="token" nillable="true" type="xsd:string"/><element name="xmlEncoding" nillable="true" type="xsd:string"/></sequence></complexType><complexType name="PcspArg"><sequence><element name="cmdId" type="xsd:int"/><element name="cmsAddress" nillable="true" type="xsd:string"/><element name="entityName" nillable="true" type="xsd:string"/><element name="flags" type="xsd:int"/><element name="key" nillable="true" type="xsd:string"/><element name="keyType" nillable="true" type="xsd:string"/><element name="token" nillable="true" type="xsd:string"/></sequence></complexType><complexType name="ArrayOfPcspArg"><complexContent><restriction base="soapenc:Array"><attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:PcspArg[]"/></restriction></complexContent></complexType><complexType name="ArrayOfPcspObj"><complexContent><restriction base="soapenc:Array"><attribute ref="soapenc:arrayType" wsdl:arrayType="tns2:PcspObj[]"/></restriction></complexContent></complexType></schema><schema targetNamespace="http://net.jboss.org/jmx" xmlns="http://www.w3.org/2001/XMLSchema"><import namespace="http://schemas.xmlsoap.org/soap/encoding/"/><simpleType name="ObjectNameType"><simpleContent><extension base="xsd:string"/></simpleContent></simpleType></schema></wsdl:types>
+  <wsdl:message name="logoutResponse">
+  </wsdl:message>
+  <wsdl:message name="cmdStatusRequest">
+    <wsdl:part name="isCmd" type="xsd:boolean"/>
+    <wsdl:part name="code" type="xsd:int"/>
+    <wsdl:part name="subCode" type="xsd:int"/>
+    <wsdl:part name="vendorExtension" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="makeRequestRequest">
+    <wsdl:part name="in0" type="tns1:SVRequest"/>
+  </wsdl:message>
+  <wsdl:message name="logoutRequest">
+    <wsdl:part name="in0" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="auditMtaRequest">
+    <wsdl:part name="args" type="tns2:ArrayOfPcspArg"/>
+  </wsdl:message>
+  <wsdl:message name="makeRequestResponse">
+    <wsdl:part name="makeRequestReturn" type="tns1:SVResponse"/>
+  </wsdl:message>
+  <wsdl:message name="modifyRequest">
+    <wsdl:part name="objs" type="tns2:ArrayOfPcspObj"/>
+  </wsdl:message>
+  <wsdl:message name="deleteRequest">
+    <wsdl:part name="args" type="tns2:ArrayOfPcspArg"/>
+  </wsdl:message>
+  <wsdl:message name="testRequest">
+    <wsdl:part name="String_1" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getResponse">
+    <wsdl:part name="Result" type="tns2:ArrayOfPcspObj"/>
+  </wsdl:message>
+  <wsdl:message name="putResponse">
+    <wsdl:part name="Result" type="tns2:ArrayOfPcspObj"/>
+  </wsdl:message>
+  <wsdl:message name="auditMtaResponse">
+    <wsdl:part name="Result" type="tns2:ArrayOfPcspObj"/>
+  </wsdl:message>
+  <wsdl:message name="modifyResponse">
+    <wsdl:part name="Result" type="tns2:ArrayOfPcspObj"/>
+  </wsdl:message>
+  <wsdl:message name="cmdStatusResponse">
+    <wsdl:part name="Result" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="putRequest">
+    <wsdl:part name="objs" type="tns2:ArrayOfPcspObj"/>
+  </wsdl:message>
+  <wsdl:message name="testResponse">
+    <wsdl:part name="Result" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="loginResponse">
+    <wsdl:part name="authenticateReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="loginRequest">
+    <wsdl:part name="in0" type="xsd:string"/>
+    <wsdl:part name="in1" type="xsd:string"/>
+    <wsdl:part name="in2" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="deleteResponse">
+    <wsdl:part name="Result" type="tns2:ArrayOfPcspObj"/>
+  </wsdl:message>
+  <wsdl:message name="getRequest">
+    <wsdl:part name="args" type="tns2:ArrayOfPcspArg"/>
+  </wsdl:message>
+  <wsdl:portType name="PcspI01ServiceRemote">
+    <wsdl:operation name="get" parameterOrder="args">
+      <wsdl:input message="impl:getRequest" name="getRequest"/>
+      <wsdl:output message="impl:getResponse" name="getResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="put" parameterOrder="objs">
+      <wsdl:input message="impl:putRequest" name="putRequest"/>
+      <wsdl:output message="impl:putResponse" name="putResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="delete" parameterOrder="args">
+      <wsdl:input message="impl:deleteRequest" name="deleteRequest"/>
+      <wsdl:output message="impl:deleteResponse" name="deleteResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="modify" parameterOrder="objs">
+      <wsdl:input message="impl:modifyRequest" name="modifyRequest"/>
+      <wsdl:output message="impl:modifyResponse" name="modifyResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="auditMta" parameterOrder="args">
+      <wsdl:input message="impl:auditMtaRequest" name="auditMtaRequest"/>
+      <wsdl:output message="impl:auditMtaResponse" name="auditMtaResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="cmdStatus" parameterOrder="isCmd code subCode vendorExtension">
+      <wsdl:input message="impl:cmdStatusRequest" name="cmdStatusRequest"/>
+      <wsdl:output message="impl:cmdStatusResponse" name="cmdStatusResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="test" parameterOrder="String_1">
+      <wsdl:input message="impl:testRequest" name="testRequest"/>
+      <wsdl:output message="impl:testResponse" name="testResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="makeRequest" parameterOrder="in0">
+      <wsdl:input message="impl:makeRequestRequest" name="makeRequestRequest"/>
+      <wsdl:output message="impl:makeRequestResponse" name="makeRequestResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="login" parameterOrder="in0 in1 in2">
+      <wsdl:input message="impl:loginRequest" name="loginRequest"/>
+      <wsdl:output message="impl:loginResponse" name="loginResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="logout" parameterOrder="in0">
+      <wsdl:input message="impl:logoutRequest" name="logoutRequest"/>
+      <wsdl:output message="impl:logoutResponse" name="logoutResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PcspI01ServiceSoapBinding" type="impl:PcspI01ServiceRemote">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="get">
+      <wsdlsoap:operation soapAction="PcspI01Service"/>
+      <wsdl:input name="getRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.packetcable.com/pcsp/i01" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="getResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://safariview.satnet.net/jboss-net/services/PcspI01Service" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="put">
+      <wsdlsoap:operation soapAction="PcspI01Service"/>
+      <wsdl:input name="putRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.packetcable.com/pcsp/i01" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="putResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://safariview.satnet.net/jboss-net/services/PcspI01Service" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <wsdlsoap:operation soapAction="PcspI01Service"/>
+      <wsdl:input name="deleteRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.packetcable.com/pcsp/i01" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="deleteResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://safariview.satnet.net/jboss-net/services/PcspI01Service" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modify">
+      <wsdlsoap:operation soapAction="PcspI01Service"/>
+      <wsdl:input name="modifyRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.packetcable.com/pcsp/i01" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="modifyResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://safariview.satnet.net/jboss-net/services/PcspI01Service" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="auditMta">
+      <wsdlsoap:operation soapAction="PcspI01Service"/>
+      <wsdl:input name="auditMtaRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.packetcable.com/pcsp/i01" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="auditMtaResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://safariview.satnet.net/jboss-net/services/PcspI01Service" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cmdStatus">
+      <wsdlsoap:operation soapAction="PcspI01Service"/>
+      <wsdl:input name="cmdStatusRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.packetcable.com/pcsp/i01" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="cmdStatusResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://safariview.satnet.net/jboss-net/services/PcspI01Service" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <wsdlsoap:operation soapAction="PcspI01Service"/>
+      <wsdl:input name="testRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.packetcable.com/pcsp/i01" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="testResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://safariview.satnet.net/jboss-net/services/PcspI01Service" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="makeRequest">
+      <wsdlsoap:operation soapAction="PcspI01Service"/>
+      <wsdl:input name="makeRequestRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.packetcable.com/pcsp/i01" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="makeRequestResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://safariview.satnet.net/jboss-net/services/PcspI01Service" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="login">
+      <wsdlsoap:operation soapAction="PcspI01Service"/>
+      <wsdl:input name="loginRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.packetcable.com/pcsp/i01" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="loginResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://safariview.satnet.net/jboss-net/services/PcspI01Service" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logout">
+      <wsdlsoap:operation soapAction="PcspI01Service"/>
+      <wsdl:input name="logoutRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.packetcable.com/pcsp/i01" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="logoutResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://safariview.satnet.net/jboss-net/services/PcspI01Service" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PcspI01ServiceRemoteService">
+    <wsdl:port binding="impl:PcspI01ServiceSoapBinding" name="PcspI01Service">
+      <wsdlsoap:address location="https://safariview.satnet.net/jboss-net/services/PcspI01Service"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

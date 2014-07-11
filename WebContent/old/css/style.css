@@ -1,0 +1,138 @@
+/* ---------------------- Dolphin nav ---------------------- */
+#time4bed-nav{position:relative;height:43px;font-size:14px;text-transform:uppercase;background:#fff url("../images/time4bed_bg.gif") repeat-x bottom left;font-family:Georgia, "Times New Roman", Times, serif;}
+#time4bed-nav ul{margin:0;padding:0;list-style-type:none;width:auto;float:left;}
+#time4bed-nav ul li{display:block;float:left;margin:0 2px;}
+#time4bed-nav ul li a{display:block;float:left;color:#ffdab6;text-decoration:none;padding:0 0 0 25px;height:43px;line-height:50px;}
+#time4bed-nav ul li a span{display:block;float:left;padding:0 25px 0 0;height:31px;width:auto;}
+#time4bed-nav ul li a:hover{color:#fff;}
+#time4bed-nav ul li a:hover span{display:block;cursor:pointer;}
+#time4bed-nav ul li a.current,#time4bed-nav ul li a.current:hover{color:#894d12;background:transparent url("../images/time2bed_left-ON.gif") no-repeat top left;}
+#time4bed-nav ul li a.current span{background:transparent url("../images/time2bed_right-ON.gif") no-repeat top right;height:43px;}
+body{
+	font-family:"Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+	font-size:9px;
+}
+a.button{
+	background:url(../images/button.gif);
+	display:block;
+	color:#555555;
+	font-weight:bold;
+	height:30px;
+	line-height:29px;
+	margin-bottom:14px;
+	text-decoration:none;
+	width:191px;
+}
+a.button2{
+	background:url(../images/button2.gif);
+	display:block;
+	color:#555555;
+	font-weight:bold;
+	height:30px;
+	line-height:29px;
+	margin-bottom:14px;
+	text-decoration:none;
+	width:291px;
+}
+a:hover.button{
+	color:#0066CC;
+}
+
+/* -------------------- */
+/* CLASSES				*/
+/* -------------------- */
+	.add{
+		background:url(../images/add2.gif) no-repeat 10px 8px;
+		text-indent:30px;
+		display:block;
+	}
+	.delete{
+		background:url(../images/delete.gif) no-repeat 10px 8px;
+		text-indent:30px;
+		display:block;
+	}
+
+	.info{
+		background:url(../images/lens.gif) no-repeat 10px 8px;
+		text-indent:30px;
+		display:block;
+	}
+	.lens{
+		background:url(../images/info.gif) no-repeat 10px 8px;
+		text-indent:35px;
+		display:block;
+	}
+
+.tb10 {
+	background-image:url(../images/form_bg.jpg);
+	background-repeat:repeat-x;
+	border:1px solid #d1c7ac;
+	width: 120px;
+	color:#333333;
+	padding:2px;
+	margin-right:3px;
+	margin-bottom:1px;
+	margin-top:3px;
+	font-family:tahoma, arial, sans-serif;
+	text-align: right;
+}
+
+.tb11 {
+	background:#FFFFFF url(../images/search.png) no-repeat 4px 4px;
+	padding:4px 4px 4px 22px;
+	border:1px solid #CCCCCC;
+	width:90px;
+	height:13px;
+	font-family:tahoma, arial, sans-serif;
+	text-align: right;
+	vertical-align: middle;
+}
+.boton{
+	vertical-align:middle;
+	border: 1px solid #969184;
+	font-family:tahoma, arial, sans-serif;
+	background-color: #E3E3EE;
+}
+.usuario{
+	font-family:tahoma, arial, sans-serif;
+	font-size: 10px;
+	color: #00529B;
+}
+	
+
+
+
+.tabla td{ 
+	border: 1px solid #A5C7E4; 
+	padding: 3px;
+}
+
+table{ 
+	border-collapse: collapse;
+}
+
+.tableSelect td{
+	padding: 3px;
+}
+
+
+img { 
+	border: none; 
+}
+
+.style7 {
+	background-image: url(../images/barra.png);
+	background-repeat: repeat-x;
+	font-weight: bold;
+	
+	
+}
+
+.style4 {
+	color: #444444;
+}
+
+select{
+	font-family:tahoma, arial, sans-serif; 
+	font-size: 13px;
+}

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:aur="http://www.grupotvcable.com.ec/WsdlAuris/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WsdlAuris" targetNamespace="http://www.grupotvcable.com.ec/WsdlAuris/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.grupotvcable.com.ec/WsdlAuris/" elementFormDefault="qualified">
+      <xsd:element name="AprovAuris">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ejecutaComando" type="aur:Comando"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AprovAurisResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="consultaRespuesta" type="aur:Respuesta"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="Respuesta">
+      	<xsd:sequence>
+      		<xsd:element name="Cabecera" type="aur:Cabecera"></xsd:element>
+
+      		<xsd:element name="Mensaje" type="aur:Mensaje"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Cabecera">
+      	<xsd:sequence>
+      		<xsd:element name="IDEmpresa" type="xsd:int">
+                        <xsd:annotation>
+                        	<xsd:documentation>
+                        		Código de la ciudad del negocio.
+                        	</xsd:documentation>
+                        </xsd:annotation>
+
+      		</xsd:element>
+      		<xsd:element name="Negocio" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Se especifica el negocio, para el proceso de
+      					aprovisionamiento el negocio no es lo mismo
+      					que las empresas definidas por Comarch para el
+      					Grupo TvCable.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="Interface" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Interfaces o Comandos que se ejecutara o
+      					acción en los controladores.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="Secuencia" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Número Secuencial para tener un control de los
+      					comandos enviados.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+      
+      
+      <xsd:complexType name="Mensaje">
+      	<xsd:sequence>
+      		<xsd:element name="CodError" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Código del Error que dio el controlador al
+      					procesar el comando.
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+      		<xsd:element name="DetMensaje" type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Descripción del Error que se presento al
+      					procesar el comando.
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+
+      		<xsd:element name="DatosExtrasAuris"
+      			type="aur:DatosExtrasAuris">
+                        <xsd:annotation>
+                        	<xsd:documentation>
+                        		específicamente para comandos de Auris,
+                        		permite el retorno del Pin, Did, 1800
+                        		que se han creado en Auris para guardar
+                        		en la base los datos.
+                        	</xsd:documentation>
+                        </xsd:annotation>
+      		</xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+         
+      <xsd:complexType name="DatosExtrasAuris">
+      	<xsd:sequence>
+      		<xsd:element name="Pin" type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el código de Pin que ha sido asignado al
+      					numero o lista de números telefónicos.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="DID" type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el código del Did o 1800 que ha sido
+      					asignado a un determinado pin.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+    
+      <xsd:complexType name="Detalle">
+      	<xsd:sequence>
+      		<xsd:element name="Auris" type="aur:Auris"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Auris">
+      	<xsd:sequence>
+      		<xsd:element name="Pin" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el pin que se le ha asignado al cliente.
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+      		<xsd:element name="ProductoPlaneta" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el código del producto que tiene el cliente
+      					para el servicio de llamadas internacionales.
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+      		<xsd:element name="Monto" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el monto del paquete de tiene adquirido el
+      					Cliente
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+      		<xsd:element name="Fono" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el número telefónico al que se le va a
+      					crear el pin.
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+      		<xsd:element name="ListaFono" type="aur:ListaFono"></xsd:element>
+      		<xsd:element name="CodEstado" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el código de estado (ciudad) que tendrá ese
+      					numero Dip, para las llamadas al extranjero.
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+      		<xsd:element name="CodAcceso" type="xsd:int">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el número de Dip o 1800 que ha sido
+      					asignado al Pin y numero telefónico.
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+      		<xsd:element name="Referencia" type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es el usuario que realizo la operación
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+      		<xsd:element name="ListaPin" type="aur:ListaPin"></xsd:element>
+
+      		<xsd:element name="DatoA1" type="xsd:string"></xsd:element>
+      		<xsd:element name="DatoA2" type="xsd:string"></xsd:element>
+      		<xsd:element name="DatoA3" type="xsd:string"></xsd:element>
+      		<xsd:element name="DatoA4" type="xsd:string"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="ListaFono">
+      	<xsd:sequence>
+      		<xsd:element name="Telefono" type="aur:Telefono" minOccurs="0" maxOccurs="unbounded">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Son los números Telefónicos a los que se le va
+      					asignar el mismo número de pin.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      	</xsd:sequence>
+      	<xsd:attribute name="Num" type="xsd:int"></xsd:attribute>
+      </xsd:complexType>
+    
+      <xsd:complexType name="ListaPin">
+      	<xsd:sequence>
+      		<xsd:element name="Pines" type="aur:Pines" minOccurs="0" maxOccurs="unbounded">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Es un listado de código de pines.
+      				</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      	</xsd:sequence>
+      	<xsd:attribute name="Num" type="xsd:int"></xsd:attribute>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Comando">
+      	<xsd:sequence>
+      		<xsd:element name="Cabecera" type="aur:Cabecera"></xsd:element>
+      		<xsd:element name="Detalle" type="aur:Detalle"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Telefono">
+      	<xsd:sequence>
+      		<xsd:element name="Telefono" type="xsd:int"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="Pines">
+      	<xsd:sequence>
+      		<xsd:element name="Pines" type="xsd:string"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="AprovAurisRequest">
+    <wsdl:part element="aur:AprovAuris" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="AprovAurisResponse">
+    <wsdl:part element="aur:AprovAurisResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="WsdlAuris">
+    <wsdl:operation name="AprovAuris">
+      <wsdl:input message="aur:AprovAurisRequest"/>
+      <wsdl:output message="aur:AprovAurisResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WsdlAurisSOAP" type="aur:WsdlAuris">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="AprovAuris">
+      <soap:operation soapAction="http://www.grupotvcable.com.ec/WsdlAuris/AprovAuris"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsdlAuris">
+    <wsdl:port binding="aur:WsdlAurisSOAP" name="WsdlAurisSOAP">
+      <soap:address location="http://192.168.0.108/WsAprovisionamiento/services/WsdlAuris"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
