@@ -22,7 +22,6 @@ public class TvCableIntegrationServiceLocator extends org.apache.axis.client.Ser
     }
 
     // Use to get a proxy class for BasicHttpBinding_ITvCableIntegrationService
-    //private java.lang.String BasicHttpBinding_ITvCableIntegrationService_address = "http://ns.bayteq.com:8090/TvCableIntegrationService.svc";
     private java.lang.String BasicHttpBinding_ITvCableIntegrationService_address = "http://192.168.21.191:8090/TvCableIntegrationService.svc";
 
     public java.lang.String getBasicHttpBinding_ITvCableIntegrationServiceAddress() {

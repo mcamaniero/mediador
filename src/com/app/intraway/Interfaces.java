@@ -4,6 +4,8 @@ import intrawayWS.cliente.InterfaceObjInput;
 import intrawayWS.cliente.InterfaceObjOutput;
 import intrawayWS.cliente.IntrawayWSDLLocator;
 import intrawayWS.cliente.IntrawayWSDLPortType;
+import intrawayWS.cliente.MaintenanceObjInput;
+import intrawayWS.cliente.MaintenanceObjOutput;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
@@ -29,6 +31,7 @@ import com.app.intraway.parametros.Interface820Encoding;
 import com.app.intraway.parametros.Interface822Encoding;
 import com.app.intraway.parametros.Interface824Encoding;
 import com.app.intraway.parametros.Interface830Encoding;
+import com.app.intraway.parametros.InterfaceMaintenance;
 
 import ec.com.grupotvcable.wsdlintraway.Cabecera;
 import ec.com.grupotvcable.wsdlintraway.Comando;
@@ -57,6 +60,9 @@ public class Interfaces {
 	protected Interfaz Inter = null;
 
 	private InterfaceObjInput Input = null;
+	//TODO: ADD NEW INPUT FOR MAINTANANCE
+	private MaintenanceObjInput Maintenance = null;
+	private String idEntradaCaller = new String("0");
 
 	int idServicio = 0;
 
@@ -198,28 +204,7 @@ public class Interfaces {
 			locator = new IntrawayWSDLLocator();
 			Cliente = locator.getIntrawayWSDLPort();
 			Input = getInterfaceObjInput();
-
-
-			/*if( Cab.getIDEmpresa() == Codigos.MACHALA ){
-				if(Cab.getInterface() == 600){
-					Inter.setServidorEmailCRMId("26");
-				}else if(Cab.getInterface() == 602){
-					Inter.setDominio("oro.satnet.net");
-				}
-			}else if( Cab.getIDEmpresa() == Codigos.AMBATO ){
-				if(Cab.getInterface() == 600){
-					Inter.setServidorEmailCRMId("2");
-				}else if(Cab.getInterface() == 602){
-					Inter.setDominio("amb.satnet.net");
-				}
-			}else if( Cab.getIDEmpresa() == Codigos.MANTA ){
-				if(Cab.getInterface() == 600){
-					Inter.setServidorEmailCRMId("27");
-				}else if(Cab.getInterface() == 602){
-					Inter.setDominio("mnb.satnet.net");
-				}
-			}*/
-
+			Maintenance = getMaintenanceObjInput(); 
 
 			switch(Cab.getInterface()){
 
@@ -237,7 +222,7 @@ public class Interfaces {
 			case 602: Input.setXmlEncoding(new Interface602Encoding(Inter.getUsername(), Inter.getDominio(),
 					Inter.getPassword(), Inter.getDiskQuota(), Inter.getNoticias(),
 					Inter.getName(), Cmd).getXMLEncoding()); 
-			break;//Creación de cuentas de correo
+			break;//Creación de cuentas de correo idEntradaCaller
 			case 610: Input.setXmlEncoding(new Interface610Encoding(Inter.getServicTypeCRMId()).getXMLEncoding());
 			break;//Creación espacios DialUp
 			//610 falta campo FacTrafico
@@ -278,7 +263,7 @@ public class Interfaces {
 			case 830: Input.setXmlEncoding(new Interface830Encoding(Inter.getFeatureCrmId(),
 					Inter.getActive(), Inter.getCustomer1(), Inter.getCustomer2(),
 					Inter.getCustomer3(), Inter.getCustomer4(), Inter.getSendtoController()
-			).getXMLEncoding());break;
+					).getXMLEncoding());break;
 			//Gestión de Servicios Adicionales de EndPoints
 			case 999: new GetDocsisStatus(""+Cab.getIDEmpresa(), ""+Est.getIdVenta(), ""+Est.getIdProducto(), ""+Est.getIdServicio());break;
 
@@ -287,7 +272,13 @@ public class Interfaces {
 
 			//Consulta											cliente				cantidad registros
 			case 997: new GetReport(""+Cab.getIDEmpresa(), ""+Est.getAuthKey(), Est.getIdEstado());break;
-
+			
+			case 777: //Agregar nueva funcionalidad para HABILITAR MOVILIDAD
+				Maintenance.setXmlEncoding(new InterfaceMaintenance(1).getXMLEncoding());
+				System.out.println(new InterfaceMaintenance(Maintenance.getIdEntradaCaller(), Maintenance.getIdEmpresaCRM(), 
+						Maintenance.getIdServicio(), Maintenance.getIdVenta(), Maintenance.getIdProducto(), 
+						Maintenance.getIdPromotor(), 1).getXMLEncoding());
+				break;
 			default:
 				throw new IntrawayExceptions(20018,"Interfase a procesar no existe.");
 			}
@@ -301,7 +292,6 @@ public class Interfaces {
 
 
 	private InterfaceObjInput getInterfaceObjInput(){
-
 
 		Input = new InterfaceObjInput();
 		Input.setIdInterface(""+Cab.getInterface());
@@ -351,21 +341,54 @@ public class Interfaces {
 		return Input;
 	}
 
-
-
 	private void setDatosRespuesta() throws RemoteException{
-		InterfaceObjInput[] arrayInte = new InterfaceObjInput[1];
-		arrayInte[0] = Input;
-		String doAtomic = "0";
-
-		//System.out.println("XML: "+Input.getXmlEncoding());
+		
 		if(Input.getXmlEncoding()!=null){
-			InterfaceObjOutput[] resp = Cliente.put(AuthKey, arrayInte, doAtomic);
-			InterfaceObjOutput res = resp[0];
-			setErrores(res);
+			InterfaceObjInput[] arrayInte = new InterfaceObjInput[1];
+			arrayInte[0] = Input;
+			String doAtomic = "0";
+	
+			System.out.println("XML: "+Input.getXmlEncoding());
+			if(Input.getXmlEncoding()!=null){
+				InterfaceObjOutput[] resp = Cliente.put(AuthKey, arrayInte, doAtomic);
+				InterfaceObjOutput res = resp[0];
+				setErrores(res);
+			}
 		}
+		else if(Maintenance.getXmlEncoding()!=null){ // TODO: Agregar nueva funcionalidad para HABILITAR MOVILIDAD
+			MaintenanceObjInput[] arrayMante = new MaintenanceObjInput[1];
+			arrayMante[0] = Maintenance;			
+			
+			System.out.println("XML Mantenimiento: "+Maintenance.getXmlEncoding());
+			if(Maintenance.getXmlEncoding()!=null){
+				MaintenanceObjOutput[] resp = Cliente.maintenance(AuthKey, arrayMante);
+				MaintenanceObjOutput res = resp[0];
+				setErrores(res);
+			}
+		}		
 	}
-
+	
+	private MaintenanceObjInput getMaintenanceObjInput(){
+		MaintenanceObjInput mante = new MaintenanceObjInput();
+		mante.setIdEntradaCaller(idEntradaCaller);
+		mante.setIdEmpresaCRM(Integer.toString(Cab.getIDEmpresa()));
+		mante.setIdProducto(Integer.toString(Est.getIdProducto()));
+		mante.setIdServicio(Integer.toString(Est.getIdServicio()));
+		mante.setIdServicio(Integer.toString(1));
+		mante.setIdVenta(Integer.toString(Est.getIdVenta()));
+		mante.setIdPromotor(Est.getIdPromotor());
+		
+		return mante;
+	}
+	private void setErrores(MaintenanceObjOutput err){
+		String error = err.getIdError();
+		String strError = err.getErrorStr();
+		Mens.setCodError(Integer.parseInt(error));
+		Mens.setDetMensaje("Error enviado desde Intraway: "+strError); 
+		//TODO: imprime errores obtenidos desde Iway
+		System.out.println("Error ["+error+"] - "+strError);
+		
+	}
 
 	private void setErrores(InterfaceObjOutput err){
 

@@ -1,6 +1,6 @@
 package main.webservice;
 
-import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
+//import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 
 import ec.com.grupotvcable.wsdlintraway.Cabecera;
 import ec.com.grupotvcable.wsdlintraway.Comando;
@@ -19,7 +19,7 @@ public class MainIntraway {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		spRequest500();
+		spRequest600();
 		
 
 	}
@@ -41,7 +41,7 @@ public class MainIntraway {
 		Estandar stan = new Estandar();
 		stan.setAuthKey("6167483");
 		stan.setClienteCRM(30244295);
-		stan.setFechaDiferida(new XMLGregorianCalendarImpl());
+		////stan.setFechaDiferida(new XMLGregorianCalendarImpl());
 		stan.setIdEstado(1);
 		stan.setIdProducto(0);
 		stan.setIdProductoPadre(0);
@@ -133,7 +133,7 @@ public class MainIntraway {
 		Estandar stan = new Estandar();
 		stan.setAuthKey("");
 		stan.setClienteCRM(174);
-		stan.setFechaDiferida(new XMLGregorianCalendarImpl());
+		//stan.setFechaDiferida(new XMLGregorianCalendarImpl());
 		stan.setIdEstado(1);
 		stan.setIdProducto(105);
 		stan.setIdProductoPadre(0);
@@ -224,7 +224,7 @@ public class MainIntraway {
 		Estandar stan = new Estandar();
 		stan.setAuthKey("");
 		stan.setClienteCRM(174);
-		stan.setFechaDiferida(new XMLGregorianCalendarImpl());
+		//stan.setFechaDiferida(new XMLGregorianCalendarImpl());
 		stan.setIdEstado(1);
 		stan.setIdProducto(105);
 		stan.setIdProductoPadre(0);
@@ -299,12 +299,12 @@ public class MainIntraway {
 		new WsdlIntrawayImpl().aprovIntraway(comando);
 	}
 
-	private void spRequest600() {
+	private static void spRequest600() {
 		Comando comando = new Comando();
 
 		Cabecera cab = new Cabecera();
 		cab.setIDEmpresa(63);
-		cab.setInterface(600);
+		cab.setInterface(777);
 		cab.setNegocio(2);
 		cab.setSecuencia(0);
 		comando.setCabecera(cab);
@@ -313,17 +313,17 @@ public class MainIntraway {
 		Intraway intra = new Intraway();
 
 		Estandar stan = new Estandar();
-		stan.setAuthKey("");
-		stan.setClienteCRM(174);
-		stan.setFechaDiferida(new XMLGregorianCalendarImpl());
-		stan.setIdEstado(1);
-		stan.setIdProducto(2281);
-		stan.setIdProductoPadre(105);
+		stan.setAuthKey("6529207");
+		stan.setClienteCRM(35275183);
+		//stan.setFechaDiferida(new XMLGregorianCalendarImpl());
+		stan.setIdEstado(4);
+		stan.setIdProducto(62122449);
+		stan.setIdProductoPadre(64767794);
 		stan.setIdPromotor("0");
 		stan.setIdServicioPadre(1);
 		stan.setIdVenta(0);
 		stan.setIdVentaPadre(0);
-		stan.setIdServicio(3);
+		stan.setIdServicio(1);
 
 		Interfaz inter = new Interfaz();
 		inter.setActivactionCode("");
@@ -336,9 +336,9 @@ public class MainIntraway {
 		inter.setCustomer1("");
 		inter.setCustomer2("");
 		inter.setCustomer3("");
-		inter.setCustomer4("");
-		inter.setDatoI1("");
-		inter.setDatoI2("");
+		inter.setCustomer4("BSQATEST");
+		inter.setDatoI1("41");
+		inter.setDatoI2("Elizabeth Vivero");
 		inter.setDiskQuota(0);
 		inter.setDocsis("");
 		inter.setDominio("");
@@ -373,7 +373,7 @@ public class MainIntraway {
 		inter.setSendtoController("");
 		inter.setServicePackageCRMId("");
 		inter.setServicTypeCRMId(0);
-		inter.setServidorEmailCRMId("1");
+		inter.setServidorEmailCRMId("28");
 		inter.setSnmpGroupCRMID("");
 		inter.setStartingBalance(0);
 		inter.setTn("");
@@ -395,7 +395,7 @@ public class MainIntraway {
 
 		Cabecera cab = new Cabecera();
 		cab.setIDEmpresa(63);
-		cab.setInterface(822);
+		cab.setInterface(666);
 		cab.setNegocio(2);
 		cab.setSecuencia(0);
 		comando.setCabecera(cab);
@@ -406,15 +406,15 @@ public class MainIntraway {
 		Estandar stan = new Estandar();
 		stan.setAuthKey("");
 		stan.setClienteCRM(174);
-		stan.setFechaDiferida(new XMLGregorianCalendarImpl());
+		//stan.setFechaDiferida(new XMLGregorianCalendarImpl());
 		stan.setIdEstado(2);
-		stan.setIdProducto(0);// tipo de dato
+		stan.setIdProducto(62122449);// tipo de dato
 		stan.setIdProductoPadre(0);
 		stan.setIdPromotor("0");
 		stan.setIdServicioPadre(1);
 		stan.setIdVenta(0);
 		stan.setIdVentaPadre(0);
-		stan.setIdServicio(20);
+		stan.setIdServicio(1);
 
 		Interfaz inter = new Interfaz();
 		inter.setActivactionCode("");
@@ -497,7 +497,7 @@ public class MainIntraway {
 		Estandar stan = new Estandar();
 		stan.setAuthKey("");
 		stan.setClienteCRM(174);
-		stan.setFechaDiferida(new XMLGregorianCalendarImpl());
+		//stan.setFechaDiferida(new XMLGregorianCalendarImpl());
 		stan.setIdEstado(1);
 		stan.setIdProducto(105);
 		stan.setIdProductoPadre(0);
@@ -588,7 +588,7 @@ public class MainIntraway {
 		Estandar stan = new Estandar();
 		stan.setAuthKey("");
 		stan.setClienteCRM(174);
-		stan.setFechaDiferida(new XMLGregorianCalendarImpl());
+		//stan.setFechaDiferida(new XMLGregorianCalendarImpl());
 		stan.setIdEstado(1);
 		stan.setIdProducto(106);
 		stan.setIdProductoPadre(112);
@@ -679,7 +679,7 @@ public class MainIntraway {
 		Estandar stan = new Estandar();
 		stan.setAuthKey("");
 		stan.setClienteCRM(174);
-		stan.setFechaDiferida(new XMLGregorianCalendarImpl());
+		//stan.setFechaDiferida(new XMLGregorianCalendarImpl());
 		stan.setIdEstado(1);
 		stan.setIdProducto(0);
 		stan.setIdProductoPadre(0);
@@ -770,7 +770,7 @@ public class MainIntraway {
 		Estandar stan = new Estandar();
 		stan.setAuthKey("");
 		stan.setClienteCRM(174);
-		stan.setFechaDiferida(new XMLGregorianCalendarImpl());
+		//stan.setFechaDiferida(new XMLGregorianCalendarImpl());
 		stan.setIdEstado(1);
 		stan.setIdProducto(0);
 		stan.setIdProductoPadre(0);
@@ -861,7 +861,7 @@ public class MainIntraway {
 		Estandar stan = new Estandar();
 		stan.setAuthKey("");
 		stan.setClienteCRM(174);
-		stan.setFechaDiferida(new XMLGregorianCalendarImpl());
+		//stan.setFechaDiferida(new XMLGregorianCalendarImpl());
 		stan.setIdEstado(1);
 		stan.setIdProducto(0);
 		stan.setIdProductoPadre(0);
@@ -952,7 +952,7 @@ public class MainIntraway {
 		Estandar stan = new Estandar();
 		stan.setAuthKey("");
 		stan.setClienteCRM(174);
-		stan.setFechaDiferida(new XMLGregorianCalendarImpl());
+		//stan.setFechaDiferida(new XMLGregorianCalendarImpl());
 		stan.setIdEstado(1);
 		stan.setIdProducto(0);
 		stan.setIdProductoPadre(0);
@@ -1043,7 +1043,7 @@ public class MainIntraway {
 		Estandar stan = new Estandar();
 		stan.setAuthKey("");
 		stan.setClienteCRM(174);
-		stan.setFechaDiferida(new XMLGregorianCalendarImpl());
+		//stan.setFechaDiferida(new XMLGregorianCalendarImpl());
 		stan.setIdEstado(1);
 		stan.setIdProducto(0);
 		stan.setIdProductoPadre(0);
@@ -1134,7 +1134,7 @@ public class MainIntraway {
 		Estandar stan = new Estandar();
 		stan.setAuthKey("");
 		stan.setClienteCRM(174);
-		stan.setFechaDiferida(new XMLGregorianCalendarImpl());
+		//stan.setFechaDiferida(new XMLGregorianCalendarImpl());
 		stan.setIdEstado(1);
 		stan.setIdProducto(2281);
 		stan.setIdProductoPadre(105);

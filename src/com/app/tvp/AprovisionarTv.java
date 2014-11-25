@@ -107,7 +107,7 @@ public class AprovisionarTv {
 
 			int contrato = Integer.valueOf("" + admContratosLinea.get(0));
 			int usuario = Integer.valueOf("" + admUsuariosLinea.get(0));
-
+			
 			if (baseAprovisionar.equals("BSCC")) {
 				base = 1;
 				System.out.println("BASE APROVISIONAR ---" + base);
@@ -126,17 +126,15 @@ public class AprovisionarTv {
 			} else if (baseAprovisionar.equals("TYTANE")) {
 				if (contrato == 1) {
 					esContrato = true;
+					base = 2;
+				} 
+				else {
+					base = 1;
 				}
 
 				if (usuario == 1) {
 					esUsuario = true;
-				}
-
-				if (esContrato) {
-					base = 2;
-				} else {
-					base = 1;
-				}
+				}				
 			}
 
 			switch (base) {

@@ -34,20 +34,18 @@ public class MainTvPagada {
 // COMANDO QUE SE USA PARA GENERAR LOS COMANDOS DAC
 	public Comando setDAC() {
 		Cabecera cab = new Cabecera();
-		cab.setIDEmpresa(666);
-		System.out.println("--ciudad = "+ cab.getIDEmpresa() );
-
+		cab.setIDEmpresa(64);
 		cab.setInterface(700);// crear 713 702 714 701 713 crea 714 eliminas
 									// 702 acitvas 701 init
 		cab.setNegocio(3);
-		cab.setSecuencia(26861993);
+		cab.setSecuencia(28570691);
 		cmd.setCabecera(cab);
 
 		Detalle det = new Detalle();
 
 		TVpagada tv = new TVpagada();
 		
-		tv.setAccion(6); // 3 Creación - 2 inicializacion
+		tv.setAccion(6); // 3 Creación - 2 inicializacion - 5 CORTAR
 
 		Comienzo FechIni = new Comienzo();
 		//FechIni.setFechaIni(XMLGregorianCalendarImpl.createDate(2008, 07, 29,DatatypeConstants.FIELD_UNDEFINED));
@@ -58,21 +56,23 @@ public class MainTvPagada {
 		//Fecfin.setTiempoFin(XMLGregorianCalendarImpl.createTime(20, 30, 0,DatatypeConstants.FIELD_UNDEFINED));
 		tv.setFinal(Fecfin);
 		tv.setDatoC2("TYTAN");
-		tv.setSerie("PAER00898863");
-		tv.setIdConvertidor("0000074830422009");
-		tv.setCItem(4293978);
+		tv.setSerie("GI1301TD3540");
+		tv.setIdConvertidor("0000301498023048");
+		tv.setCItem(5933436);
 
-		tv.setIdServicio(208); //208 super premium
-		tv.setTipoA(21);
-		tv.setCredito(50); //50
+		tv.setIdServicio(202); //208 super premium
+		tv.setTipoA(1666);
+		tv.setCredito(0); //50
 		tv.setEstadoC("Y");
 		tv.setUbicacion(20);
 		tv.setDescEvento(null);
-		tv.setTipoD(7032);
-		tv.setTipoPromocion(0);
+		tv.setTipoD(4000);
+		tv.setTipoPromocion(3080);
 		tv.setDatoC1("0");
-		paquetes1 = 409;
-		paquetes2 = 403;
+		//TODO: eliminar
+		tv.setCodigoCanal(0);
+		paquetes1 = 0;
+		paquetes2 = 0;
 		if (paquetes1 != 0) {
 			if (paquetes2 == 0) {
 				IdPaquetes idpaquetes = new IdPaquetes();

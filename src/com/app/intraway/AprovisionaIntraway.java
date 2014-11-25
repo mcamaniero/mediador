@@ -64,15 +64,18 @@ public class AprovisionaIntraway {
 			Properties prop = new Properties();
 			String path = getClass().getProtectionDomain().getCodeSource().
 			getLocation().toString().substring(5);
-			path = path.substring(0, path.length()-25);
+			//path = path.substring(0, path.length()-24);
+			
+			path = new String("C:\\desarrollo\\");
 
 			try {
-				fis = new FileInputStream(new File( path + "/userTest.properties"));
+				fis = new FileInputStream(new File( path + "userTest.properties"));
 				prop.load(fis);
 			} catch(IOException e) {
 			}
 
 			String[] tmp_users 		= prop.getProperty("users_test").split(",");
+			//String[] tmp_users 		= new String("41,21,").split(",");
 			String[] tmp_schemas 	= prop.getProperty("schema_test").split(",");
 			String[] tmp_allow_cpartyid 	= prop.getProperty("cpartyid_test").split(",");
 			String schema_Prod 		= prop.getProperty("schema_produccion");
