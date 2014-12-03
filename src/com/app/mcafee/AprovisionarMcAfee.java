@@ -1519,6 +1519,7 @@ public class AprovisionarMcAfee {
 
 
 	public static void main(String a[]) {
+		System.out.println("inicio");
 		String clave = new AprovisionarMcAfee().getSesion("108");
 		System.out.println(clave);
 	}

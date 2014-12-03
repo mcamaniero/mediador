@@ -304,7 +304,7 @@ public class MainIntraway {
 
 		Cabecera cab = new Cabecera();
 		cab.setIDEmpresa(63);
-		cab.setInterface(777);
+		cab.setInterface(622);
 		cab.setNegocio(2);
 		cab.setSecuencia(0);
 		comando.setCabecera(cab);
@@ -313,14 +313,14 @@ public class MainIntraway {
 		Intraway intra = new Intraway();
 
 		Estandar stan = new Estandar();
-		stan.setAuthKey("6529207");
-		stan.setClienteCRM(35275183);
+		stan.setAuthKey("6064343");
+		stan.setClienteCRM(38031396);
 		//stan.setFechaDiferida(new XMLGregorianCalendarImpl());
-		stan.setIdEstado(4);
-		stan.setIdProducto(62122449);
-		stan.setIdProductoPadre(64767794);
+		stan.setIdEstado(2);
+		stan.setIdProducto(67596345);
+		stan.setIdProductoPadre(0);
 		stan.setIdPromotor("0");
-		stan.setIdServicioPadre(1);
+		stan.setIdServicioPadre(0);
 		stan.setIdVenta(0);
 		stan.setIdVentaPadre(0);
 		stan.setIdServicio(1);
@@ -331,14 +331,14 @@ public class MainIntraway {
 		inter.setBandPackageCRMId("");
 		inter.setBuscarTagCRM(0);
 		inter.setCantCPE(0);
-		inter.setCantidad(1);
+		inter.setCantidad(0);
 		inter.setCmsCMDID("");
 		inter.setCustomer1("");
 		inter.setCustomer2("");
 		inter.setCustomer3("");
 		inter.setCustomer4("BSQATEST");
-		inter.setDatoI1("41");
-		inter.setDatoI2("Elizabeth Vivero");
+		inter.setDatoI1("296");
+		inter.setDatoI2("Gabriel Narvaez");
 		inter.setDiskQuota(0);
 		inter.setDocsis("");
 		inter.setDominio("");
@@ -373,7 +373,7 @@ public class MainIntraway {
 		inter.setSendtoController("");
 		inter.setServicePackageCRMId("");
 		inter.setServicTypeCRMId(0);
-		inter.setServidorEmailCRMId("28");
+		inter.setServidorEmailCRMId("");
 		inter.setSnmpGroupCRMID("");
 		inter.setStartingBalance(0);
 		inter.setTn("");
