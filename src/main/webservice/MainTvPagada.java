@@ -8,7 +8,7 @@ import javax.xml.datatype.DatatypeConstants;
 
 import com.app.tvp.Excepciones;
 
-import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
+//import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 //import tvc_srvcomgye.wsaprovisionamiento.services.wsdltvpagada.*;
 
 //import tvc_srvcomgye.wsaprovisionamiento.services.wsdltvpagada.WsdlTvPagadaImpl;
@@ -31,21 +31,21 @@ public class MainTvPagada {
 		//setDAC();
 	}
 
-// COMANDO QUE SE USA PARA GENERAR LOS COMANDOS DAC
+// CODIGO USADOPARA GENERAR LOS COMANDOS DAC
 	public Comando setDAC() {
 		Cabecera cab = new Cabecera();
-		cab.setIDEmpresa(64);
-		cab.setInterface(700);// crear 713 702 714 701 713 crea 714 eliminas
+		cab.setIDEmpresa(94);
+		cab.setInterface(701);// crear 713 702 714 701 713 crea 714 eliminas
 									// 702 acitvas 701 init
 		cab.setNegocio(3);
-		cab.setSecuencia(28570691);
+		cab.setSecuencia(0);
 		cmd.setCabecera(cab);
 
 		Detalle det = new Detalle();
 
 		TVpagada tv = new TVpagada();
 		
-		tv.setAccion(6); // 3 Creación - 2 inicializacion - 5 CORTAR
+		tv.setAccion(2); // 3 Creación - 2 inicializacion - 5 CORTAR
 
 		Comienzo FechIni = new Comienzo();
 		//FechIni.setFechaIni(XMLGregorianCalendarImpl.createDate(2008, 07, 29,DatatypeConstants.FIELD_UNDEFINED));
@@ -55,19 +55,19 @@ public class MainTvPagada {
 		//Fecfin.setFechaFin(XMLGregorianCalendarImpl.createDate(2008, 7, 29,DatatypeConstants.FIELD_UNDEFINED));
 		//Fecfin.setTiempoFin(XMLGregorianCalendarImpl.createTime(20, 30, 0,DatatypeConstants.FIELD_UNDEFINED));
 		tv.setFinal(Fecfin);
-		tv.setDatoC2("TYTAN");
-		tv.setSerie("GI1301TD3540");
-		tv.setIdConvertidor("0000301498023048");
-		tv.setCItem(5933436);
+		tv.setDatoC2("TYTANE");
+		tv.setSerie("GI1050TCB617");
+		tv.setIdConvertidor("0000276841819163");
+		tv.setCItem(6189110);
 
 		tv.setIdServicio(202); //208 super premium
-		tv.setTipoA(1666);
-		tv.setCredito(0); //50
-		tv.setEstadoC("Y");
+		tv.setTipoA(699);
+		tv.setCredito(10); //50
+		tv.setEstadoC("N");
 		tv.setUbicacion(20);
 		tv.setDescEvento(null);
-		tv.setTipoD(4000);
-		tv.setTipoPromocion(3080);
+		tv.setTipoD(4002);
+		tv.setTipoPromocion(0);
 		tv.setDatoC1("0");
 		//TODO: eliminar
 		tv.setCodigoCanal(0);
@@ -129,6 +129,105 @@ public class MainTvPagada {
 		return cmd;
 
 	}
+	
+	// CODIGO USADOPARA GENERAR LOS COMANDOS DAC
+		public Comando setDACSAC() {
+			Cabecera cab = new Cabecera();
+			cab.setIDEmpresa(94);
+			cab.setInterface(700);// crear 713 702 714 701 713 crea 714 eliminas
+										// 702 acitvas 701 init
+			cab.setNegocio(3);
+			cab.setSecuencia(0);
+			cmd.setCabecera(cab);
+
+			Detalle det = new Detalle();
+
+			TVpagada tv = new TVpagada();
+			
+			tv.setAccion(6); // 3 Creación - 2 inicializacion - 5 CORTAR
+
+			Comienzo FechIni = new Comienzo();
+			//FechIni.setFechaIni(XMLGregorianCalendarImpl.createDate(2008, 07, 29,DatatypeConstants.FIELD_UNDEFINED));
+			//FechIni.setTiempoIni(XMLGregorianCalendarImpl.createTime(20, 0, 0,DatatypeConstants.FIELD_UNDEFINED));
+			tv.setComienzo(FechIni);
+			Final Fecfin = new Final();
+			//Fecfin.setFechaFin(XMLGregorianCalendarImpl.createDate(2008, 7, 29,DatatypeConstants.FIELD_UNDEFINED));
+			//Fecfin.setTiempoFin(XMLGregorianCalendarImpl.createTime(20, 30, 0,DatatypeConstants.FIELD_UNDEFINED));
+			tv.setFinal(Fecfin);
+			tv.setDatoC2("BSCC");
+			tv.setSerie("GI1050TCB617");
+			tv.setIdConvertidor("0000276841819163");
+			tv.setCItem(77777);
+
+			tv.setIdServicio(202); //208 super premium
+			tv.setTipoA(500004);
+			tv.setCredito(0); //50
+			tv.setEstadoC("N");
+			tv.setUbicacion(20);
+			tv.setDescEvento("192.168.8.199");
+			tv.setTipoD(4002);
+			tv.setTipoPromocion(0);
+			tv.setDatoC1("309");
+			//TODO: eliminar
+			tv.setCodigoCanal(0);
+			paquetes1 = 0;
+			paquetes2 = 0;
+			if (paquetes1 != 0) {
+				if (paquetes2 == 0) {
+					IdPaquetes idpaquetes = new IdPaquetes();
+					idpaquetes.setCantP(1);
+					List<IdPaquete> lstpaquete = idpaquetes.getIdPaquete();
+
+					IdPaquete paq = new IdPaquete();
+					paq.setIdPaquete(paquetes1);// 200010 //880154 //880156 500004
+					lstpaquete.add(paq);
+
+					idpaquetes.getIdPaquete().addAll(lstpaquete);
+					tv.setIdPaquetes(idpaquetes);
+				} else {
+					IdPaquetes idpaquetes = new IdPaquetes();
+					idpaquetes.setCantP(2);
+					List<IdPaquete> lstpaquete = idpaquetes.getIdPaquete();
+
+					IdPaquete paq = new IdPaquete();
+					paq.setIdPaquete(paquetes1);
+					lstpaquete.add(paq);
+
+					IdPaquete paq2 = new IdPaquete();
+					paq2.setIdPaquete(paquetes2);
+					lstpaquete.add(paq2);
+
+					idpaquetes.getIdPaquete().addAll(lstpaquete);
+					tv.setIdPaquetes(idpaquetes);
+				}
+			}
+
+			eventos1 = 0;
+			if (eventos1 != 0) {
+			//if (eventos1 == 0) {
+				IdEventos ideventos = new IdEventos();
+
+				ideventos.setCantE(1);
+
+				List<IdEvento> lstevento = ideventos.getIdEvento();
+
+				IdEvento eve = new IdEvento();
+				eve.setIdEvento(eventos1); // 200010 //880154 //880156 90763
+				lstevento.add(eve);
+
+				ideventos.getIdEvento().addAll(lstevento);
+				tv.setIdEventos(ideventos);
+			}
+
+			det.setTVpagada(tv);
+			// 0911334050
+			cmd.setDetalle(det);
+			System.out.println(tv.getSerie());
+			System.out.println("Datoc1="+tv.getDatoC1());
+
+			return cmd;
+
+		}
 
 
 	public static void main(String[] args) throws NumberFormatException,
@@ -139,7 +238,7 @@ public class MainTvPagada {
 		System.out.println(" INICIO DEL PROCESO");
 		System.out.println(" --------------------- CAS");
 		Respuesta response = new WsdlTvPagadaImpl()
-					.aprovTvPagada(new MainTvPagada().setDAC());
+					.aprovTvPagada(new MainTvPagada().setDACSAC());
 
 		System.out.println("Codigo Error  "+response.getMensaje().getCodError());
 		System.out.println("Mensaje Error "+response.getMensaje().getDetMensaje());

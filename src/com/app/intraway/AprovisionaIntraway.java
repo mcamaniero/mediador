@@ -9,11 +9,8 @@ import java.util.Properties;
 import javax.xml.rpc.ServiceException;
 
 import ec.com.grupotvcable.wsdlintraway.Comando;
-import tvcable.app.comarch.utils.Codigos;
-
 import ec.com.grupotvcable.wsdlintraway.Mensaje;
-import ec.com.grupotvcable.wsdlintraway.Respuesta; 
-import ec.com.grupotvcable.wsdlmcafee.WsdlMcAfeeImpl;
+import ec.com.grupotvcable.wsdlintraway.Respuesta;
 
 public class AprovisionaIntraway {
 
